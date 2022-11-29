@@ -1,0 +1,607 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9DD110A72935E682008B651A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD110A62935E682008B651A /* AppDelegate.swift */; };
+		9DD110A92935E682008B651A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD110A82935E682008B651A /* SceneDelegate.swift */; };
+		9DD110AB2935E682008B651A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD110AA2935E682008B651A /* ViewController.swift */; };
+		9DD110AE2935E682008B651A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DD110AC2935E682008B651A /* Main.storyboard */; };
+		9DD110B02935E683008B651A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DD110AF2935E683008B651A /* Assets.xcassets */; };
+		9DD110B32935E683008B651A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DD110B12935E683008B651A /* LaunchScreen.storyboard */; };
+		9DD110BE2935E684008B651A /* The_Tasar_mTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD110BD2935E684008B651A /* The_Tasar_mTests.swift */; };
+		9DD110C82935E684008B651A /* The_Tasar_mUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD110C72935E684008B651A /* The_Tasar_mUITests.swift */; };
+		9DD110CA2935E684008B651A /* The_Tasar_mUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD110C92935E684008B651A /* The_Tasar_mUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9DD110BA2935E684008B651A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9DD1109B2935E682008B651A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9DD110A22935E682008B651A;
+			remoteInfo = "The Tasarım";
+		};
+		9DD110C42935E684008B651A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9DD1109B2935E682008B651A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9DD110A22935E682008B651A;
+			remoteInfo = "The Tasarım";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9DD110A32935E682008B651A /* The Tasarım.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Tasarım.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DD110A62935E682008B651A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9DD110A82935E682008B651A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		9DD110AA2935E682008B651A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9DD110AD2935E682008B651A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9DD110AF2935E683008B651A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9DD110B22935E683008B651A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9DD110B42935E683008B651A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9DD110B92935E684008B651A /* The TasarımTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "The TasarımTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DD110BD2935E684008B651A /* The_Tasar_mTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_Tasar_mTests.swift; sourceTree = "<group>"; };
+		9DD110C32935E684008B651A /* The TasarımUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "The TasarımUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DD110C72935E684008B651A /* The_Tasar_mUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_Tasar_mUITests.swift; sourceTree = "<group>"; };
+		9DD110C92935E684008B651A /* The_Tasar_mUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_Tasar_mUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9DD110A02935E682008B651A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DD110B62935E684008B651A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DD110C02935E684008B651A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9DD1109A2935E682008B651A = {
+			isa = PBXGroup;
+			children = (
+				9DD110A52935E682008B651A /* The Tasarım */,
+				9DD110BC2935E684008B651A /* The TasarımTests */,
+				9DD110C62935E684008B651A /* The TasarımUITests */,
+				9DD110A42935E682008B651A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9DD110A42935E682008B651A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9DD110A32935E682008B651A /* The Tasarım.app */,
+				9DD110B92935E684008B651A /* The TasarımTests.xctest */,
+				9DD110C32935E684008B651A /* The TasarımUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9DD110A52935E682008B651A /* The Tasarım */ = {
+			isa = PBXGroup;
+			children = (
+				9DD110A62935E682008B651A /* AppDelegate.swift */,
+				9DD110A82935E682008B651A /* SceneDelegate.swift */,
+				9DD110AA2935E682008B651A /* ViewController.swift */,
+				9DD110AC2935E682008B651A /* Main.storyboard */,
+				9DD110AF2935E683008B651A /* Assets.xcassets */,
+				9DD110B12935E683008B651A /* LaunchScreen.storyboard */,
+				9DD110B42935E683008B651A /* Info.plist */,
+			);
+			path = "The Tasarım";
+			sourceTree = "<group>";
+		};
+		9DD110BC2935E684008B651A /* The TasarımTests */ = {
+			isa = PBXGroup;
+			children = (
+				9DD110BD2935E684008B651A /* The_Tasar_mTests.swift */,
+			);
+			path = "The TasarımTests";
+			sourceTree = "<group>";
+		};
+		9DD110C62935E684008B651A /* The TasarımUITests */ = {
+			isa = PBXGroup;
+			children = (
+				9DD110C72935E684008B651A /* The_Tasar_mUITests.swift */,
+				9DD110C92935E684008B651A /* The_Tasar_mUITestsLaunchTests.swift */,
+			);
+			path = "The TasarımUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9DD110A22935E682008B651A /* The Tasarım */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DD110CD2935E684008B651A /* Build configuration list for PBXNativeTarget "The Tasarım" */;
+			buildPhases = (
+				9DD1109F2935E682008B651A /* Sources */,
+				9DD110A02935E682008B651A /* Frameworks */,
+				9DD110A12935E682008B651A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "The Tasarım";
+			productName = "The Tasarım";
+			productReference = 9DD110A32935E682008B651A /* The Tasarım.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9DD110B82935E684008B651A /* The TasarımTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DD110D02935E684008B651A /* Build configuration list for PBXNativeTarget "The TasarımTests" */;
+			buildPhases = (
+				9DD110B52935E684008B651A /* Sources */,
+				9DD110B62935E684008B651A /* Frameworks */,
+				9DD110B72935E684008B651A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9DD110BB2935E684008B651A /* PBXTargetDependency */,
+			);
+			name = "The TasarımTests";
+			productName = "The TasarımTests";
+			productReference = 9DD110B92935E684008B651A /* The TasarımTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		9DD110C22935E684008B651A /* The TasarımUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DD110D32935E684008B651A /* Build configuration list for PBXNativeTarget "The TasarımUITests" */;
+			buildPhases = (
+				9DD110BF2935E684008B651A /* Sources */,
+				9DD110C02935E684008B651A /* Frameworks */,
+				9DD110C12935E684008B651A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9DD110C52935E684008B651A /* PBXTargetDependency */,
+			);
+			name = "The TasarımUITests";
+			productName = "The TasarımUITests";
+			productReference = 9DD110C32935E684008B651A /* The TasarımUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9DD1109B2935E682008B651A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1410;
+				LastUpgradeCheck = 1410;
+				TargetAttributes = {
+					9DD110A22935E682008B651A = {
+						CreatedOnToolsVersion = 14.1;
+					};
+					9DD110B82935E684008B651A = {
+						CreatedOnToolsVersion = 14.1;
+						TestTargetID = 9DD110A22935E682008B651A;
+					};
+					9DD110C22935E684008B651A = {
+						CreatedOnToolsVersion = 14.1;
+						TestTargetID = 9DD110A22935E682008B651A;
+					};
+				};
+			};
+			buildConfigurationList = 9DD1109E2935E682008B651A /* Build configuration list for PBXProject "The Tasarım" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9DD1109A2935E682008B651A;
+			productRefGroup = 9DD110A42935E682008B651A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9DD110A22935E682008B651A /* The Tasarım */,
+				9DD110B82935E684008B651A /* The TasarımTests */,
+				9DD110C22935E684008B651A /* The TasarımUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9DD110A12935E682008B651A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DD110B32935E683008B651A /* LaunchScreen.storyboard in Resources */,
+				9DD110B02935E683008B651A /* Assets.xcassets in Resources */,
+				9DD110AE2935E682008B651A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DD110B72935E684008B651A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DD110C12935E684008B651A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9DD1109F2935E682008B651A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DD110AB2935E682008B651A /* ViewController.swift in Sources */,
+				9DD110A72935E682008B651A /* AppDelegate.swift in Sources */,
+				9DD110A92935E682008B651A /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DD110B52935E684008B651A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DD110BE2935E684008B651A /* The_Tasar_mTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DD110BF2935E684008B651A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DD110CA2935E684008B651A /* The_Tasar_mUITestsLaunchTests.swift in Sources */,
+				9DD110C82935E684008B651A /* The_Tasar_mUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9DD110BB2935E684008B651A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9DD110A22935E682008B651A /* The Tasarım */;
+			targetProxy = 9DD110BA2935E684008B651A /* PBXContainerItemProxy */;
+		};
+		9DD110C52935E684008B651A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9DD110A22935E682008B651A /* The Tasarım */;
+			targetProxy = 9DD110C42935E684008B651A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9DD110AC2935E682008B651A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9DD110AD2935E682008B651A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9DD110B12935E683008B651A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9DD110B22935E683008B651A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9DD110CB2935E684008B651A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9DD110CC2935E684008B651A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9DD110CE2935E684008B651A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6TVQSAB3DR;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "The Tasarım/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.secret.The-Tasar-m";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9DD110CF2935E684008B651A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6TVQSAB3DR;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "The Tasarım/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.secret.The-Tasar-m";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		9DD110D12935E684008B651A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6TVQSAB3DR;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.secret.The-Tasar-mTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/The Tasarım.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/The Tasarım";
+			};
+			name = Debug;
+		};
+		9DD110D22935E684008B651A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6TVQSAB3DR;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.secret.The-Tasar-mTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/The Tasarım.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/The Tasarım";
+			};
+			name = Release;
+		};
+		9DD110D42935E684008B651A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6TVQSAB3DR;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.secret.The-Tasar-mUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "The Tasarım";
+			};
+			name = Debug;
+		};
+		9DD110D52935E684008B651A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6TVQSAB3DR;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.secret.The-Tasar-mUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "The Tasarım";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9DD1109E2935E682008B651A /* Build configuration list for PBXProject "The Tasarım" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DD110CB2935E684008B651A /* Debug */,
+				9DD110CC2935E684008B651A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9DD110CD2935E684008B651A /* Build configuration list for PBXNativeTarget "The Tasarım" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DD110CE2935E684008B651A /* Debug */,
+				9DD110CF2935E684008B651A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9DD110D02935E684008B651A /* Build configuration list for PBXNativeTarget "The TasarımTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DD110D12935E684008B651A /* Debug */,
+				9DD110D22935E684008B651A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9DD110D32935E684008B651A /* Build configuration list for PBXNativeTarget "The TasarımUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DD110D42935E684008B651A /* Debug */,
+				9DD110D52935E684008B651A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9DD1109B2935E682008B651A /* Project object */;
+}
