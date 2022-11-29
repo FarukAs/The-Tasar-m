@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GTQ-pP-thF">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -241,7 +241,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L9T-Oe-tnV">
                                                 <rect key="frame" x="131" y="0.0" width="131" height="57"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="      🛒     The Tasarım">
+                                                <buttonConfiguration key="configuration" style="plain" title="      🛒     Sepetim">
                                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="14"/>
                                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
@@ -255,6 +255,7 @@
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="accountButton:" destination="GTQ-pP-thF" eventType="touchUpInside" id="INe-m5-H1z"/>
+                                                    <segue destination="lQR-bj-vR5" kind="show" id="4gs-pB-szu"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -339,17 +340,16 @@
                     </view>
                     <navigationItem key="navigationItem" id="cFj-BR-y06"/>
                     <connections>
-                        <outlet property="CollectionView" destination="31V-uC-a2Y" id="dUH-5e-NlR"/>
-                        <outlet property="collectionView" destination="31V-uC-a2Y" id="Ulp-1c-UAP"/>
-                        <outlet property="eighthView" destination="6WA-JY-aWh" id="VkM-h2-9NG"/>
+                        <outlet property="collectionView" destination="31V-uC-a2Y" id="Zth-iJ-jg1"/>
+                        <outlet property="eighthView" destination="6WA-JY-aWh" id="eRN-Mp-40i"/>
                         <outlet property="fifthView" destination="GcQ-A9-wo7" id="NlT-xk-KRC"/>
                         <outlet property="firstView" destination="AeF-yw-qVo" id="3cC-Yd-4yr"/>
                         <outlet property="fourthView" destination="wbu-lP-dtL" id="hBa-1A-TVo"/>
                         <outlet property="ninthView" destination="GLu-VY-woI" id="DHV-9N-ShN"/>
                         <outlet property="secondView" destination="jhE-Rs-UP0" id="zYa-nE-QHy"/>
-                        <outlet property="seventhView" destination="raH-j5-dtA" id="2Bz-XD-RMa"/>
-                        <outlet property="sixthView" destination="raH-j5-dtA" id="BKI-c4-61O"/>
-                        <outlet property="tenthView" destination="w34-J7-OTg" id="Kse-B1-HOA"/>
+                        <outlet property="seventhView" destination="ixC-N6-wgb" id="SKC-Dh-ZwA"/>
+                        <outlet property="sixthView" destination="raH-j5-dtA" id="XFL-Zf-46m"/>
+                        <outlet property="tenthView" destination="w34-J7-OTg" id="rJm-nz-br3"/>
                         <outlet property="thirdView" destination="eHu-pz-RkK" id="9bO-Fp-UZ1"/>
                     </connections>
                 </viewController>
@@ -442,10 +442,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="clV-67-Z9Q">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="69" translatesAutoresizingMaskIntoConstraints="NO" id="MYl-ol-vfx">
-                                        <rect key="frame" x="0.0" y="255.33333333333331" width="393" height="248.66666666666669"/>
+                                        <rect key="frame" x="0.0" y="233.33333333333331" width="393" height="248.66666666666669"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1@2.com" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U3q-tf-Quv">
                                                 <rect key="frame" x="0.0" y="0.0" width="393" height="34"/>

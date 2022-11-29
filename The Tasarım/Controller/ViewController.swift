@@ -10,21 +10,22 @@ import FirebaseCore
 import FirebaseFirestore
 import FirebaseAuth
 import GoogleSignIn
+import GoogleSignInSwift
 
-class ViewController: UIViewController {
+class ViewController: UIViewController , UICollectionViewDataSource , UICollectionViewDelegate {
     
     
-    @IBOutlet var CollectionView: UICollectionView!
+    @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var firstView: UIView!
     @IBOutlet var secondView: UIView!
     @IBOutlet var thirdView: UIView!
     @IBOutlet var fourthView: UIView!
-    @IBOutlet var fifthView: UIView!
     @IBOutlet var sixthView: UIView!
     @IBOutlet var seventhView: UIView!
     @IBOutlet var eighthView: UIView!
     @IBOutlet var ninthView: UIView!
     @IBOutlet var fifthView: UIView!
+    @IBOutlet var tenthView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         views(viewdesign: firstView)
