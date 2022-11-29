@@ -47,7 +47,12 @@ class ViewController: UIViewController , UICollectionViewDataSource , UICollecti
         collectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ReusableCell")
     }
     @IBAction func accountButton(_ sender: UIButton) {
-        performSegue(withIdentifier: "toLoginVC", sender: nil)
+        if Auth.auth().currentUser != nil {
+            performSegue(withIdentifier: "toAccountVC", sender: nil)
+        } else {
+            performSegue(withIdentifier: "toRegisterVC", sender: nil)
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
