@@ -12,32 +12,32 @@ import FirebaseAuth
 import GoogleSignIn
 import GoogleSignInSwift
 
-class LoginViewController: UIViewController , UITextFieldDelegate , UIApplicationDelegate  {
-    
-    
+class LoginViewController: UIViewController , UITextFieldDelegate , UIApplicationDelegate   {
     
     
     @IBOutlet var loginButtonOutlet: UIButton!
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
-    let signInConfig = GIDConfiguration(clientID: "918468520308-anbuv7i2dch9e7ddubdjth44ileffr3e.apps.googleusercontent.com")
+    @IBOutlet var imageView: UIImageView!
+    
+    
     @IBAction func loginButton(_ sender: UIButton) {
-
-          GIDSignIn.sharedInstance.signIn(
-            with: signInConfig,
-            presenting: self) { user, error in
-              guard  error == nil else {
-                return
-              }
-              // If sign in succeeded, display the app's main content View.
+        
+        if let email = emailTextField.text , let password = passwordTextField.text {
+            Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+                if let e = error {
+                    print(e)
+                } else {
+                    print(authResult as Any)
+                }
+                
             }
-          
         }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-      
     }
-    
-}
+        
+        override func viewDidLoad() {
+            super.viewDidLoad()
+        }
+        
+    }
 

@@ -47,7 +47,9 @@ class ViewController: UIViewController , UICollectionViewDataSource , UICollecti
         collectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ReusableCell")
     }
     @IBAction func accountButton(_ sender: UIButton) {
+        performSegue(withIdentifier: "toLoginVC", sender: nil)
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)

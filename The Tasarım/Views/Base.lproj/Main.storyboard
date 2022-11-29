@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GTQ-pP-thF">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -254,8 +255,7 @@
                                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <action selector="accountButton:" destination="GTQ-pP-thF" eventType="touchUpInside" id="INe-m5-H1z"/>
-                                                    <segue destination="lQR-bj-vR5" kind="show" id="4gs-pB-szu"/>
+                                                    <action selector="accountButton:" destination="GTQ-pP-thF" eventType="touchUpInside" id="Jus-2Q-fZ2"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -351,6 +351,7 @@
                         <outlet property="sixthView" destination="raH-j5-dtA" id="XFL-Zf-46m"/>
                         <outlet property="tenthView" destination="w34-J7-OTg" id="rJm-nz-br3"/>
                         <outlet property="thirdView" destination="eHu-pz-RkK" id="9bO-Fp-UZ1"/>
+                        <segue destination="lQR-bj-vR5" kind="showDetail" identifier="toLoginVC" id="lbT-nM-cJ1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qp6-hZ-63J" sceneMemberID="firstResponder"/>
@@ -438,14 +439,14 @@
             <objects>
                 <viewController id="lQR-bj-vR5" customClass="LoginViewController" customModule="The_Tasarım" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="D7H-0U-XT0">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="clV-67-Z9Q">
-                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <rect key="frame" x="0.0" y="59" width="393" height="724"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="69" translatesAutoresizingMaskIntoConstraints="NO" id="MYl-ol-vfx">
-                                        <rect key="frame" x="0.0" y="233.33333333333331" width="393" height="248.66666666666669"/>
+                                        <rect key="frame" x="0.0" y="237.66666666666669" width="393" height="248.66666666666669"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1@2.com" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U3q-tf-Quv">
                                                 <rect key="frame" x="0.0" y="0.0" width="393" height="34"/>
@@ -462,7 +463,7 @@
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x7R-Y6-Lju">
-                                                <rect key="frame" x="0.0" y="206.00000000000006" width="393" height="42.666666666666657"/>
+                                                <rect key="frame" x="0.0" y="206" width="393" height="42.666666666666657"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Login">
@@ -475,6 +476,10 @@
                                             </button>
                                         </subviews>
                                     </stackView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ksn-2C-h2w">
+                                        <rect key="frame" x="136" y="67" width="120" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -497,13 +502,14 @@
                     <navigationItem key="navigationItem" id="4DA-Y0-yhh"/>
                     <connections>
                         <outlet property="emailTextField" destination="U3q-tf-Quv" id="j3y-r4-HBQ"/>
+                        <outlet property="imageView" destination="Ksn-2C-h2w" id="buo-ye-8uh"/>
                         <outlet property="loginButtonOutlet" destination="x7R-Y6-Lju" id="TmD-t9-PIN"/>
                         <outlet property="passwordTextField" destination="mro-Rd-tUt" id="OUC-xD-jsj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v1O-y5-wZx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3010" y="739"/>
+            <point key="canvasLocation" x="3009.9236641221373" y="738.73239436619724"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="t7q-wK-ZRc">
