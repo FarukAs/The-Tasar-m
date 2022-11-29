@@ -16,6 +16,13 @@
 		9DD110BE2935E684008B651A /* The_Tasar_mTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD110BD2935E684008B651A /* The_Tasar_mTests.swift */; };
 		9DD110C82935E684008B651A /* The_Tasar_mUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD110C72935E684008B651A /* The_Tasar_mUITests.swift */; };
 		9DD110CA2935E684008B651A /* The_Tasar_mUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD110C92935E684008B651A /* The_Tasar_mUITestsLaunchTests.swift */; };
+		9DD110DB2935E75A008B651A /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD110DA2935E75A008B651A /* AccountViewController.swift */; };
+		9DD110DD2935E766008B651A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD110DC2935E766008B651A /* LoginViewController.swift */; };
+		9DD110DF2935E771008B651A /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD110DE2935E771008B651A /* RegisterViewController.swift */; };
+		9DD110E22935E78D008B651A /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD110E02935E78D008B651A /* CollectionViewCell.swift */; };
+		9DD110E32935E78D008B651A /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DD110E12935E78D008B651A /* CollectionViewCell.xib */; };
+		9DD110E52935E79B008B651A /* ViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD110E42935E79B008B651A /* ViewContent.swift */; };
+		9DD110E72935E7A6008B651A /* ContentBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD110E62935E7A6008B651A /* ContentBrain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +56,13 @@
 		9DD110C32935E684008B651A /* The TasarımUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "The TasarımUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DD110C72935E684008B651A /* The_Tasar_mUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_Tasar_mUITests.swift; sourceTree = "<group>"; };
 		9DD110C92935E684008B651A /* The_Tasar_mUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_Tasar_mUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9DD110DA2935E75A008B651A /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		9DD110DC2935E766008B651A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		9DD110DE2935E771008B651A /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		9DD110E02935E78D008B651A /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		9DD110E12935E78D008B651A /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
+		9DD110E42935E79B008B651A /* ViewContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewContent.swift; sourceTree = "<group>"; };
+		9DD110E62935E7A6008B651A /* ContentBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBrain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +113,12 @@
 		9DD110A52935E682008B651A /* The Tasarım */ = {
 			isa = PBXGroup;
 			children = (
+				9DD110D62935E692008B651A /* Controller */,
+				9DD110D72935E69B008B651A /* Views */,
+				9DD110D82935E70E008B651A /* CollectionCell */,
+				9DD110D92935E71C008B651A /* Model */,
 				9DD110A62935E682008B651A /* AppDelegate.swift */,
 				9DD110A82935E682008B651A /* SceneDelegate.swift */,
-				9DD110AA2935E682008B651A /* ViewController.swift */,
-				9DD110AC2935E682008B651A /* Main.storyboard */,
 				9DD110AF2935E683008B651A /* Assets.xcassets */,
 				9DD110B12935E683008B651A /* LaunchScreen.storyboard */,
 				9DD110B42935E683008B651A /* Info.plist */,
@@ -125,6 +141,43 @@
 				9DD110C92935E684008B651A /* The_Tasar_mUITestsLaunchTests.swift */,
 			);
 			path = "The TasarımUITests";
+			sourceTree = "<group>";
+		};
+		9DD110D62935E692008B651A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9DD110AA2935E682008B651A /* ViewController.swift */,
+				9DD110DA2935E75A008B651A /* AccountViewController.swift */,
+				9DD110DC2935E766008B651A /* LoginViewController.swift */,
+				9DD110DE2935E771008B651A /* RegisterViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9DD110D72935E69B008B651A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9DD110AC2935E682008B651A /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9DD110D82935E70E008B651A /* CollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				9DD110E02935E78D008B651A /* CollectionViewCell.swift */,
+				9DD110E12935E78D008B651A /* CollectionViewCell.xib */,
+			);
+			path = CollectionCell;
+			sourceTree = "<group>";
+		};
+		9DD110D92935E71C008B651A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9DD110E42935E79B008B651A /* ViewContent.swift */,
+				9DD110E62935E7A6008B651A /* ContentBrain.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,6 +286,7 @@
 			files = (
 				9DD110B32935E683008B651A /* LaunchScreen.storyboard in Resources */,
 				9DD110B02935E683008B651A /* Assets.xcassets in Resources */,
+				9DD110E32935E78D008B651A /* CollectionViewCell.xib in Resources */,
 				9DD110AE2935E682008B651A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -260,6 +314,12 @@
 			files = (
 				9DD110AB2935E682008B651A /* ViewController.swift in Sources */,
 				9DD110A72935E682008B651A /* AppDelegate.swift in Sources */,
+				9DD110E52935E79B008B651A /* ViewContent.swift in Sources */,
+				9DD110DB2935E75A008B651A /* AccountViewController.swift in Sources */,
+				9DD110E22935E78D008B651A /* CollectionViewCell.swift in Sources */,
+				9DD110DF2935E771008B651A /* RegisterViewController.swift in Sources */,
+				9DD110DD2935E766008B651A /* LoginViewController.swift in Sources */,
+				9DD110E72935E7A6008B651A /* ContentBrain.swift in Sources */,
 				9DD110A92935E682008B651A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
