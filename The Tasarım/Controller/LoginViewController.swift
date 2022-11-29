@@ -16,7 +16,7 @@ class LoginViewController: UIViewController {
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     
-    let signInConfig = GIDConfiguration(clientID: "212843834036-tp6bu6in15dqhf5b1eim96j2v9fg5d4e.apps.googleusercontent.com")
+    let signInConfig = GIDConfiguration(clientID: "918468520308-anbuv7i2dch9e7ddubdjth44ileffr3e.apps.googleusercontent.com")
 
     override func viewDidLoad() {
   
