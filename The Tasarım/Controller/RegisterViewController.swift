@@ -13,14 +13,17 @@ import GoogleSignIn
 import GoogleSignInSwift
 
 class RegisterViewController: UIViewController , UITextFieldDelegate {
-
+    
+    let db = Firestore.firestore()
+    
+    @IBOutlet var userinfo: UITextField!
     @IBOutlet var registerButtonOutlet: UIButton!
-
+    
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         registerButtonOutlet.layer.cornerRadius = 18
         registerButtonOutlet.layer.shadowColor = UIColor.black.cgColor
         registerButtonOutlet.layer.shadowOffset = CGSize(width: 5, height: 5)
@@ -37,11 +40,24 @@ class RegisterViewController: UIViewController , UITextFieldDelegate {
                 if let e = error {
                     print(e)
                 } else {
+                    if let username = self.userinfo.text ,let email = Auth.auth().currentUser?.email   {
+                        self.db.collection("username").addDocument(data: [
+                            "email" : email ,
+                            "username" :username
+                        ]) { err in
+                            if let e = err {
+                                print(e)
+                            } else {
+                                print("Succesfully")
+                            }
+                        }
+                    }
+                    
                     self.performSegue(withIdentifier: "registerToAccountVC", sender: nil)
                 }
-                
             }
         }
+
     }
     
     func hideKeyboardWhenTappedAround() {
@@ -63,7 +79,7 @@ class RegisterViewController: UIViewController , UITextFieldDelegate {
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
             self!.registerButtonOutlet.isSelected = false
-            }
+        }
         self.registerButtonOutlet.isSelected = true
         self.hideKeyboardWhenTappedAround()
         print("tapped")

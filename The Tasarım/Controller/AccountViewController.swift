@@ -13,24 +13,64 @@ import GoogleSignIn
 import GoogleSignInSwift
 
 class AccountViewController: UIViewController {
-
+    
+    @IBOutlet var logOutButtonOutlet: UIButton!
+    let db = Firestore.firestore()
+    
+    @IBOutlet var usernameLabel: UILabel!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let user = Auth.auth().currentUser?.email
+        if Auth.auth().currentUser != nil {
+            print("user signed in\(user)")
+            
+            logOutButtonOutlet.layer.cornerRadius = 18
+            logOutButtonOutlet.layer.shadowColor = UIColor.black.cgColor
+            logOutButtonOutlet.layer.shadowOffset = CGSize(width: 5, height: 5)
+            logOutButtonOutlet.layer.shadowRadius = 10
+            logOutButtonOutlet.layer.shadowOpacity = 0.3
+            
+            
+            db.collection("username").addSnapshotListener() { (querySnapshot, err) in
+                if let e = err {
+                    print(e)
+                } else {
+                    for doc in querySnapshot!.documents {
+                        let data = doc.data()
+                        if let username = data["username"] , let email = data["email"] {
+                            if email as! String? == Auth.auth().currentUser?.email as String?  {
+                                self.usernameLabel.text = "\(username)"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+    
 
     @IBAction func button(_ sender: UIButton) {
-        do {
+        
+        
+        for element in View {
+            db.collection("products").addDocument(data:[
+                "image" : element.image,
+                "label" : element.label
+         ])
+        }
+    }
+    @IBAction func logOutButton(_ sender: UIButton) {
+
+        
+         do {
             try Auth.auth().signOut()
             navigationController?.popToRootViewController(animated: true)
         } catch let signOutError as NSError {
             print("Error signing out: %@", signOutError)
         }
+        
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        var user = Auth.auth().currentUser?.email
-        if Auth.auth().currentUser != nil {
-            print("user signed in\(user)")
-        }
 
-    }
     
-
 }

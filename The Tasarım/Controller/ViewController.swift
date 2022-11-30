@@ -41,7 +41,7 @@ class ViewController: UIViewController , UICollectionViewDataSource , UICollecti
         self.hideKeyboardWhenTappedAround()
         
         
-
+        
         
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ReusableCell")
@@ -59,7 +59,7 @@ class ViewController: UIViewController , UICollectionViewDataSource , UICollecti
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
@@ -82,9 +82,36 @@ class ViewController: UIViewController , UICollectionViewDataSource , UICollecti
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReusableCell", for: indexPath as IndexPath) as! CollectionViewCell
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         cell.label.text = "\(View[indexPath.item].label)"
         cell.imageView.image = UIImage(named: "\(View[indexPath.item].image)")
-
+        
         cell.layer.cornerRadius = 5.0
         cell.layer.shadowColor = UIColor.black.cgColor
         cell.layer.shadowOffset = CGSize(width: 5, height: 5)
@@ -94,9 +121,9 @@ class ViewController: UIViewController , UICollectionViewDataSource , UICollecti
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            // handle tap events
-            print("You selected cell #\(indexPath.item)!")
-        }
+        // handle tap events
+        print("You selected cell #\(indexPath.item)!")
+    }
     func hideKeyboardWhenTappedAround() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
@@ -106,5 +133,6 @@ class ViewController: UIViewController , UICollectionViewDataSource , UICollecti
         view.endEditing(true)
     }
 
+    
 }
 
