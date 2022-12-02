@@ -8,30 +8,39 @@
 import UIKit
 
 class ProductViewController: UIViewController {
+    @IBOutlet var priceLabel: UILabel!
+    @IBOutlet var informationLabel: UILabel!
     @IBOutlet var labelone: UILabel!
-    
     @IBOutlet var imageView: UIImageView!
+    @IBOutlet var addBasketButton: UIButton!
     
     var selectedlabel = ""
-    var selectedimage = UIImage(named: "")
+    var selectedimage = ""
+    var selectedinformation = ""
+    var selectedprice = Int(0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        addBasketButton.layer.cornerRadius = 18
+        addBasketButton.layer.shadowColor = UIColor.black.cgColor
+        addBasketButton.layer.shadowOffset = CGSize(width: 5, height: 5)
+        addBasketButton.layer.shadowRadius = 10
+        addBasketButton.layer.shadowOpacity = 0.3
         
         labelone.text = selectedlabel
-        imageView.image = selectedimage
-        print(selectedlabel)
+        priceLabel.text = "\(selectedprice) TL"
+        informationLabel.text = selectedinformation
+
+        URLSession.shared.dataTask(with: URL(string: selectedimage)!) { (data, response, error) in
+         
+          guard let imageData = data else { return }
+
+          DispatchQueue.main.async {
+              self.imageView.image = UIImage(data: imageData)
+          }
+        }.resume()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

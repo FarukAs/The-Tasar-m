@@ -116,6 +116,7 @@ print("en son bu")
         
         cell.label.text = "\(View[indexPath.item].label)"
         cell.imageView.image = UIImage(named: "\(View[indexPath.item].image)")
+        
 
         cell.layer.cornerRadius = 5.0
         cell.layer.shadowColor = UIColor.black.cgColor
@@ -124,6 +125,16 @@ print("en son bu")
         cell.layer.shadowOpacity = 0.5
         cell.layer.masksToBounds = false
 
+
+        URLSession.shared.dataTask(with: URL(string: View[indexPath.item].image)!) { (data, response, error) in
+          // Error handling...
+          guard let imageData = data else { return }
+
+          DispatchQueue.main.async {
+              cell.imageView.image = UIImage(data: imageData)
+          }
+        }.resume()
+      
         
         return cell
     }
@@ -136,7 +147,9 @@ print("en son bu")
                 }
             
             selam.selllabel = "\(View[indexPath.item].label)"
-            selam.sellimage = UIImage(named: "\(View[indexPath.item].image)")
+            selam.sellimage = "\(View[indexPath.item].image)"
+            selam.sellinformation = "\(View[indexPath.item].information)"
+            selam.sellprice = Int(View[indexPath.item].price)
  
         print("You selected cell #\(indexPath.item)!")
     }
@@ -145,6 +158,8 @@ print("en son bu")
             let destinationVC = segue.destination as! ProductViewController
             destinationVC.selectedlabel = selam.selllabel
             destinationVC.selectedimage = selam.sellimage
+            destinationVC.selectedinformation = selam.sellinformation
+            destinationVC.selectedprice = selam.sellprice
         }
    }
     
@@ -157,7 +172,20 @@ print("en son bu")
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
-
-    
+}
+extension UIImageView {
+    func loadFrom(URLAddress: String) {
+        guard let url = URL(string: URLAddress) else {
+            return
+        }
+        
+        DispatchQueue.main.async { [weak self] in
+            if let imageData = try? Data(contentsOf: url) {
+                if let loadedImage = UIImage(data: imageData) {
+                        self?.image = loadedImage
+                }
+            }
+        }
+    }
 }
 
