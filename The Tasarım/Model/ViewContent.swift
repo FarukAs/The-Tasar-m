@@ -13,12 +13,16 @@ struct Content {
     let label : String
     let information : String
     let price : Int
+    let like: String
+    let basket: String
     
-    init(image: String, label: String ,information: String , price:Int) {
+    init(image: String, label: String ,information: String , price:Int, like: String, basket:String) {
         self.image = image
         self.label = label
         self.information = information
         self.price = price
+        self.like = like
+        self.basket = basket
     }
 }
 struct selam {

@@ -22,6 +22,7 @@ class AccountViewController: UIViewController {
         super.viewDidLoad()
         let user = Auth.auth().currentUser?.email
         if Auth.auth().currentUser != nil {
+            
             print("user signed in\(user)")
             
             logOutButtonOutlet.layer.cornerRadius = 18
@@ -49,17 +50,6 @@ class AccountViewController: UIViewController {
         
     }
     
-
-    @IBAction func button(_ sender: UIButton) {
-        
-        
-        for element in View {
-            db.collection("products").addDocument(data:[
-                "image" : element.image,
-                "label" : element.label
-         ])
-        }
-    }
     @IBAction func logOutButton(_ sender: UIButton) {
 
         
