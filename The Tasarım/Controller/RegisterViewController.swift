@@ -16,6 +16,7 @@ class RegisterViewController: UIViewController , UITextFieldDelegate {
     
     let db = Firestore.firestore()
     
+    
     @IBOutlet var userinfo: UITextField!
     @IBOutlet var registerButtonOutlet: UIButton!
     
@@ -35,10 +36,15 @@ class RegisterViewController: UIViewController , UITextFieldDelegate {
         
     }
     @IBAction func registerButton(_ sender: UIButton) {
-        if let email = emailTextField.text , let password = passwordTextField.text {
+        let username = userinfo.text
+        let email = emailTextField.text
+        let password = passwordTextField.text
+        
+        if let email = emailTextField.text , let password = passwordTextField.text , let username = self.userinfo.text , username != "" {
             Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
                 if let e = error {
                     print(e)
+                    
                 } else {
                     if let username = self.userinfo.text ,let email = Auth.auth().currentUser?.email   {
                         self.db.collection("username").addDocument(data: [
@@ -46,7 +52,7 @@ class RegisterViewController: UIViewController , UITextFieldDelegate {
                             "username" :username
                         ]) { err in
                             if let e = err {
-                                print(e)
+                                print("burası\(e)")
                             } else {
                                 print("Succesfully")
                             }
@@ -56,6 +62,13 @@ class RegisterViewController: UIViewController , UITextFieldDelegate {
                     self.performSegue(withIdentifier: "registerToAccountVC", sender: nil)
                 }
             }
+        } else if username == "" {
+            print("username gir")
+            //burası username.text boşsa verilecek alert button
+        }; if email == "" {
+            print("email giriniz")
+        }; if password == "" {
+            print("şifre giriniz")
         }
 
     }

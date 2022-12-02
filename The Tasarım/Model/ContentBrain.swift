@@ -8,7 +8,7 @@
 import Foundation
 
 var View = [
-    Content(image: "telefon", label: "İphone"),
+    Content(image: "telefon", label: "iphone"),
     Content(image: "televizyon", label: "Lg"),
     Content(image: "modagiyim", label: "Elbise"),
     Content(image: "evaletleri", label: "Tost Makinesi"),
@@ -17,9 +17,5 @@ var View = [
     Content(image: "petshop", label: "Kedi Maması"),
     Content(image: "yapimarket", label: "Matkap"),
     Content(image: "bilgisayar", label: "Monster Notebook"),
-    Content(image: "annebebek", label: " Bebek Arabası"),
-    Content(image: "annebebek", label: " Bebek Arabası"),
-    Content(image: "annebebek", label: " Bebek Arabası"),
-    Content(image: "annebebek", label: " Bebek Arabası"),
     Content(image: "annebebek", label: " Bebek Arabası")
 ]

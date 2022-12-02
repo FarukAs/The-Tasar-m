@@ -34,4 +34,5 @@ class CollectionViewCell: UICollectionViewCell {
                 }
             }
         }
+
 }

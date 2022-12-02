@@ -17,6 +17,7 @@
 		9D3D42492935ED54009B680C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9D3D42482935ED54009B680C /* GoogleService-Info.plist */; };
 		9D3D424E2935F396009B680C /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 9D3D424D2935F396009B680C /* GoogleSignIn */; };
 		9D3D42502935F399009B680C /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9D3D424F2935F399009B680C /* GoogleSignInSwift */; };
+		9D3F632329388A150026278C /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3F632229388A150026278C /* ProductViewController.swift */; };
 		9DD110A72935E682008B651A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD110A62935E682008B651A /* AppDelegate.swift */; };
 		9DD110A92935E682008B651A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD110A82935E682008B651A /* SceneDelegate.swift */; };
 		9DD110AB2935E682008B651A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD110AA2935E682008B651A /* ViewController.swift */; };
@@ -55,6 +56,7 @@
 /* Begin PBXFileReference section */
 		9D3D42462935ED18009B680C /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = credentials.plist; path = ../../../Downloads/credentials.plist; sourceTree = "<group>"; };
 		9D3D42482935ED54009B680C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9D3F632229388A150026278C /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		9DD110A32935E682008B651A /* The Tasarım.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Tasarım.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DD110A62935E682008B651A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DD110A82935E682008B651A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				9DD110DA2935E75A008B651A /* AccountViewController.swift */,
 				9DD110DC2935E766008B651A /* LoginViewController.swift */,
 				9DD110DE2935E771008B651A /* RegisterViewController.swift */,
+				9D3F632229388A150026278C /* ProductViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				9DD110DF2935E771008B651A /* RegisterViewController.swift in Sources */,
 				9DD110DD2935E766008B651A /* LoginViewController.swift in Sources */,
 				9DD110E72935E7A6008B651A /* ContentBrain.swift in Sources */,
+				9D3F632329388A150026278C /* ProductViewController.swift in Sources */,
 				9DD110A92935E682008B651A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

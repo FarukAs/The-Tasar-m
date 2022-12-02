@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Content {
     let image : String
@@ -15,4 +16,8 @@ struct Content {
         self.image = image
         self.label = label
     }
+}
+struct selam {
+    static var sellimage = UIImage(named: "")
+    static var selllabel = ""
 }
