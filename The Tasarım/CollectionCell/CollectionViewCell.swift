@@ -34,7 +34,4 @@ class CollectionViewCell: UICollectionViewCell {
                 }
             }
         }
-
-    @IBAction func likeButton(_ sender: UIButton) {
-    }
 }

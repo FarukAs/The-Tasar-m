@@ -14,11 +14,9 @@ import GoogleSignInSwift
 
 class ViewController: UIViewController , UICollectionViewDataSource , UICollectionViewDelegate {
     
+    @IBOutlet var scrollView: UIScrollView!
     let db = Firestore.firestore()
-    /*var selecteditem : Int = 0
-    var selllabel = ""
-    var sellimage = UIImage(named: "")
-*/
+
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var firstView: UIView!
     @IBOutlet var secondView: UIView!
@@ -30,6 +28,8 @@ class ViewController: UIViewController , UICollectionViewDataSource , UICollecti
     @IBOutlet var ninthView: UIView!
     @IBOutlet var fifthView: UIView!
     @IBOutlet var tenthView: UIView!
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         views(viewdesign: firstView)
@@ -42,10 +42,10 @@ class ViewController: UIViewController , UICollectionViewDataSource , UICollecti
         views(viewdesign: eighthView)
         views(viewdesign: ninthView)
         views(viewdesign: tenthView)
+       
         self.hideKeyboardWhenTappedAround()
-        
         collectionView.reloadData()
-        
+        print("test")
        /* db.collection("products").addSnapshotListener() { (querySnapshot, err) in
             if let e = err {
                 print(e)
@@ -114,6 +114,7 @@ print("en son bu")
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReusableCell", for: indexPath as IndexPath) as! CollectionViewCell
         
+
         cell.label.text = "\(View[indexPath.item].label)"
         cell.imageView.image = UIImage(named: "\(View[indexPath.item].image)")
         
@@ -150,6 +151,7 @@ print("en son bu")
             selam.sellimage = "\(View[indexPath.item].image)"
             selam.sellinformation = "\(View[indexPath.item].information)"
             selam.sellprice = Int(View[indexPath.item].price)
+            selam.sellnumber = Int(View[indexPath.item].number)
  
         print("You selected cell #\(indexPath.item)!")
     }
@@ -160,6 +162,7 @@ print("en son bu")
             destinationVC.selectedimage = selam.sellimage
             destinationVC.selectedinformation = selam.sellinformation
             destinationVC.selectedprice = selam.sellprice
+            destinationVC.selectednumber = selam.sellnumber
         }
    }
     

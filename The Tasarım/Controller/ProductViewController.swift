@@ -13,11 +13,12 @@ class ProductViewController: UIViewController {
     @IBOutlet var labelone: UILabel!
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var addBasketButton: UIButton!
-    
+    @IBOutlet var likeButtonOutlet: UIButton!
     var selectedlabel = ""
     var selectedimage = ""
     var selectedinformation = ""
     var selectedprice = Int(0)
+    var selectednumber = Int(0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,7 @@ class ProductViewController: UIViewController {
         addBasketButton.layer.shadowRadius = 10
         addBasketButton.layer.shadowOpacity = 0.3
         
+        print(selectednumber)
         labelone.text = selectedlabel
         priceLabel.text = "\(selectedprice) TL"
         informationLabel.text = selectedinformation
@@ -42,4 +44,10 @@ class ProductViewController: UIViewController {
     }
     
 
+    @IBAction func likeButton(_ sender: UIButton) {
+        likeButtonOutlet.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        UserDefaults.standard.set(selectednumber, forKey: "liked")
+        print(selectednumber)
+
+    }
 }

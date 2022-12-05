@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -41,6 +42,10 @@
                                                     </label>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <accessibility key="accessibilityConfiguration" label="sa">
+                                                    <accessibilityTraits key="traits" none="YES"/>
+                                                    <bool key="isElement" value="NO"/>
+                                                </accessibility>
                                             </view>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jhE-Rs-UP0" userLabel="2.View">
                                                 <rect key="frame" x="4" y="119" width="75" height="109"/>
@@ -288,6 +293,14 @@
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="dfE-Ae-n3u">
                                             <rect key="frame" x="0.0" y="0.0" width="96" height="116"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZt-E1-Nv8">
+                                                    <rect key="frame" x="10" y="40" width="75" height="35"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                </button>
+                                            </subviews>
                                         </collectionViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -346,6 +359,7 @@
                         <outlet property="firstView" destination="AeF-yw-qVo" id="3cC-Yd-4yr"/>
                         <outlet property="fourthView" destination="wbu-lP-dtL" id="hBa-1A-TVo"/>
                         <outlet property="ninthView" destination="GLu-VY-woI" id="DHV-9N-ShN"/>
+                        <outlet property="scrollView" destination="LjX-gF-Cc4" id="1Gg-MN-i7h"/>
                         <outlet property="secondView" destination="jhE-Rs-UP0" id="zYa-nE-QHy"/>
                         <outlet property="seventhView" destination="ixC-N6-wgb" id="SKC-Dh-ZwA"/>
                         <outlet property="sixthView" destination="raH-j5-dtA" id="XFL-Zf-46m"/>
@@ -358,7 +372,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qp6-hZ-63J" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1955" y="4"/>
+            <point key="canvasLocation" x="1954.9618320610687" y="3.5211267605633805"/>
         </scene>
         <!--Product View Controller-->
         <scene sceneID="Gny-FV-QVv">
@@ -368,6 +382,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QOl-R6-3ZL">
+                                <rect key="frame" x="0.0" y="103" width="393" height="348"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fzq-Ns-yzW">
                                 <rect key="frame" x="0.0" y="451" width="393" height="301"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -406,13 +424,11 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OLu-T1-ivA">
                                                 <rect key="frame" x="14" y="19" width="365" height="202"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.76171875" green="0.2491881339" blue="0.19919723210000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemTealColor"/>
                                     </view>
                                 </subviews>
                                 <viewLayoutGuide key="contentLayoutGuide" id="6AB-T4-PKJ"/>
@@ -441,10 +457,18 @@
                                     </button>
                                 </subviews>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QOl-R6-3ZL">
-                                <rect key="frame" x="0.0" y="103" width="393" height="348"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SRf-FA-5gy">
+                                <rect key="frame" x="351" y="108" width="42" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" subtitle="">
+                                    <imageReference key="image" image="heart" catalog="system" symbolScale="large"/>
+                                    <color key="baseForegroundColor" systemColor="systemRedColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="likeButton:" destination="aIc-59-xO1" eventType="touchUpInside" id="904-I3-0XQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="C6e-3T-okO"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -455,6 +479,7 @@
                         <outlet property="imageView" destination="QOl-R6-3ZL" id="H4I-7y-PMS"/>
                         <outlet property="informationLabel" destination="OLu-T1-ivA" id="rm6-Hi-epV"/>
                         <outlet property="labelone" destination="AoZ-QT-rFN" id="ud2-zs-05h"/>
+                        <outlet property="likeButtonOutlet" destination="SRf-FA-5gy" id="f8g-DL-0V1"/>
                         <outlet property="priceLabel" destination="KTT-b4-YNB" id="NZ7-dy-VLj"/>
                     </connections>
                 </viewController>
@@ -704,6 +729,7 @@
         <image name="bilgisayar" width="501" height="750"/>
         <image name="door.left.hand.open" catalog="system" width="108" height="128"/>
         <image name="evaletleri" width="225" height="225"/>
+        <image name="heart" catalog="system" width="128" height="107"/>
         <image name="kitapkirtasiye" width="288" height="175"/>
         <image name="modagiyim" width="225" height="225"/>
         <image name="petshop" width="225" height="225"/>
@@ -714,8 +740,8 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemTealColor">
-            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiarySystemGroupedBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
