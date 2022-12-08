@@ -530,6 +530,7 @@
                     <navigationItem key="navigationItem" id="tYP-8R-Owc"/>
                     <connections>
                         <outlet property="tableView" destination="0Wq-Y8-I6h" id="lfT-ls-S1Z"/>
+                        <segue destination="aIc-59-xO1" kind="show" identifier="likeToProducstVC" id="gbF-WT-QhO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bce-KM-ChS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -557,6 +558,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="B7C-jN-IbZ"/>
+        <segue reference="gbF-WT-QhO"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bell" catalog="system" width="125" height="128"/>

@@ -34,7 +34,7 @@ class ProductViewController: UIViewController {
         addBasketButton.layer.shadowOpacity = 0.3
         informationLabel.numberOfLines = 0
         informationLabel.sizeToFit()
-        print(selectednumber)
+        
         labelone.text = selectedlabel
         priceLabel.text = "\(selectedprice) TL"
         informationLabel.text = selectedinformation
@@ -44,7 +44,7 @@ class ProductViewController: UIViewController {
                 likeButtonOutlet.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             }
         }
-        
+        print(selectedimage)
         URLSession.shared.dataTask(with: URL(string: selectedimage)!) { (data, response, error) in
          
           guard let imageData = data else { return }

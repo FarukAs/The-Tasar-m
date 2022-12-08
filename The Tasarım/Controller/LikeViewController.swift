@@ -16,9 +16,14 @@ class LikeViewController: UIViewController, UITableViewDelegate ,UITableViewData
     @IBOutlet var tableView: UITableView!
     let defaults = UserDefaults.standard
     let db = Firestore.firestore()
+    var selectedlabel = ""
+    var selectedimage = ""
+    var selectedinformation = ""
+    var selectedprice = Int(0)
+    var selectednumber = Int(0)
     override func viewDidLoad() {
-        myNewContentArray = []
         super.viewDidLoad()
+        myNewContentArray = []
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
@@ -59,4 +64,25 @@ class LikeViewController: UIViewController, UITableViewDelegate ,UITableViewData
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return myNewContentArray.count
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
+            self!.performSegue(withIdentifier: "likeToProducstVC", sender: nil)
+        }
+        
+        selam.selllabel = "\(myNewContentArray[indexPath.item].label)"
+        selam.sellimage = "\(myNewContentArray[indexPath.item].image)"
+        selam.sellinformation = "\(myNewContentArray[indexPath.item].information)"
+        selam.sellprice = Int(myNewContentArray[indexPath.item].price)
+        selam.sellnumber = Int(myNewContentArray[indexPath.item].number)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "likeToProducstVC" {
+            let destinationVC = segue.destination as! ProductViewController
+            destinationVC.selectedlabel = selam.selllabel
+            destinationVC.selectedimage = selam.sellimage
+            destinationVC.selectedinformation = selam.sellinformation
+            destinationVC.selectedprice = selam.sellprice
+            destinationVC.selectednumber = selam.sellnumber
+        }
+   }
 }

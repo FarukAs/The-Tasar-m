@@ -14,7 +14,7 @@ import GoogleSignInSwift
 class ViewController: UIViewController , UICollectionViewDataSource , UICollectionViewDelegate {
     
     @IBOutlet var categoryCollectionView: UICollectionView!
-    
+    let defaults = UserDefaults.standard
     var delegate: DataCollectionProtocol?
     var index: IndexPath?
     var category = Int(1)
@@ -24,7 +24,6 @@ class ViewController: UIViewController , UICollectionViewDataSource , UICollecti
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let defaults = UserDefaults.standard
         if let likedArray = defaults.array(forKey: "liked") as? [Int] {
             selam.likeArray = likedArray
         } else {
