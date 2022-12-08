@@ -41,7 +41,7 @@ struct selam {
     static var sellinformation = ""
     static var sellprice = Int(0)
     static var sellnumber = Int(0)
-    static var likeArray = [0]
+    static var likeArray = [9999]
 }
 
 

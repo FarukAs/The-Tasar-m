@@ -18,14 +18,13 @@ class ProductViewController: UIViewController {
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var addBasketButton: UIButton!
     @IBOutlet var likeButtonOutlet: UIButton!
+    let defaults = UserDefaults.standard
     let db = Firestore.firestore()
     var selectedlabel = ""
     var selectedimage = ""
     var selectedinformation = ""
     var selectedprice = Int(0)
     var selectednumber = Int(0)
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         addBasketButton.layer.cornerRadius = 18
@@ -33,14 +32,19 @@ class ProductViewController: UIViewController {
         addBasketButton.layer.shadowOffset = CGSize(width: 5, height: 5)
         addBasketButton.layer.shadowRadius = 10
         addBasketButton.layer.shadowOpacity = 0.3
-        
         informationLabel.numberOfLines = 0
         informationLabel.sizeToFit()
-        selam.likeArray = []
         print(selectednumber)
         labelone.text = selectedlabel
         priceLabel.text = "\(selectedprice) TL"
         informationLabel.text = selectedinformation
+        
+        for item1 in selam.likeArray {
+            if selectednumber == item1 {
+                likeButtonOutlet.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            }
+        }
+        
         URLSession.shared.dataTask(with: URL(string: selectedimage)!) { (data, response, error) in
          
           guard let imageData = data else { return }
@@ -49,53 +53,22 @@ class ProductViewController: UIViewController {
               self.imageView.image = UIImage(data: imageData)
           }
         }.resume()
-        
-        let docRef = db.collection("likedNumber").document("LA")
-        docRef.getDocument { [self] (document, error) in
-            if let document = document, document.exists {
-                let dataDescription = document.data()
-                selam.likeArray = dataDescription?["number"] as! Array
-                selam.likeArray.append(selectednumber)
-                print(selam.likeArray)
-            } else {
-                print("Document does not exist")
-            }
-        }
     }
     
 
     @IBAction func likeButton(_ sender: UIButton) {
-        likeButtonOutlet.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
-            self!.db.collection("likedNumber").document("LA").setData([
-                "number" : selam.likeArray
-            ]) { err in
-                if let err = err {
-                    print("Error writing document: \(err)")
-                } else {
-                    print("Document successfully written!")
-                    print(selam.likeArray)
-                    
-                }
-            }
-            }
-        print(selam.likeArray)
+        if likeButtonOutlet.currentImage == UIImage(systemName: "heart") {
+            likeButtonOutlet.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            selam.likeArray.append(selectednumber)
+            defaults.set(selam.likeArray, forKey: "liked")
+            
+            
+        } else {
+            likeButtonOutlet.setImage(UIImage(systemName: "heart"), for: .normal)
+            selam.likeArray.removeAll(where: { $0 == self.selectednumber })
+            defaults.set(selam.likeArray, forKey: "liked")
+        }
  
     }
-    @IBAction func speetbut(_ sender: UIButton) {
-        
-        /*
-        let docRef = db.collection("likedNumber").document("LA")
-        docRef.getDocument { [self] (document, error) in
-            if let document = document, document.exists {
-                let dataDescription = document.data()
-                safeData = dataDescription?["number"] as! Array
-                print(safeData)
-            } else {
-                print("Document does not exist")
-            }
-        }
-        */
-    }
+
 }

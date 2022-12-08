@@ -17,7 +17,6 @@ class ViewController: UIViewController , UICollectionViewDataSource , UICollecti
     
     var delegate: DataCollectionProtocol?
     var index: IndexPath?
-    
     var category = Int(1)
     let db = Firestore.firestore()
 
@@ -25,8 +24,15 @@ class ViewController: UIViewController , UICollectionViewDataSource , UICollecti
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
+        let defaults = UserDefaults.standard
+        if let likedArray = defaults.array(forKey: "liked") as? [Int] {
+            selam.likeArray = likedArray
+        } else {
+            let likedArray: [Int] = []
+            defaults.set(likedArray, forKey: "liked")
+            selam.likeArray = likedArray
+        }
+        print("sssssa\(selam.likeArray)")
         
         self.hideKeyboardWhenTappedAround()
         collectionView.reloadData()
@@ -35,8 +41,6 @@ class ViewController: UIViewController , UICollectionViewDataSource , UICollecti
             if element.category == category {
                 myView.remove(at: 0)
                 myView.append(element)
-                print("oldu")
-                print(myView)
             }else {
             }
         }
@@ -52,8 +56,6 @@ class ViewController: UIViewController , UICollectionViewDataSource , UICollecti
             self!.categoryCollectionView.allowsSelection = true
                     if itemCount > 0 {
                         self!.categoryCollectionView.selectItem(at: IndexPath(item: 2, section: 0), animated: true, scrollPosition: .centeredHorizontally)
-                        print(itemCount)
-                        print("htttt")
                     }else {
                         print("hata")
                     }
@@ -72,9 +74,6 @@ class ViewController: UIViewController , UICollectionViewDataSource , UICollecti
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
-
-
-        
     }
     override func viewDidAppear(_ animated: Bool) {
     }
@@ -83,16 +82,11 @@ class ViewController: UIViewController , UICollectionViewDataSource , UICollecti
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
-
-
     @IBAction func likeButton(_ sender: UIButton) {
         performSegue(withIdentifier: "mainToLikeVC", sender: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        //first Collection  View
-        
         if collectionView == self.collectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReusableCell", for: indexPath as IndexPath) as! CollectionViewCell
             
@@ -109,27 +103,11 @@ class ViewController: UIViewController , UICollectionViewDataSource , UICollecti
                   cell.imageView.image = UIImage(data: imageData)
               }
             }.resume()
-            
-      /*      switch category {
-                case 1:
-                print("değişti")
-                
-            default:
-                cell.label.text = "\(View[indexPath.item].label)"
-                cell.imageView.image = UIImage(named: "\(View[indexPath.item].image)")
-            }
 
-         */
-         /*   cell.imageView.image = UIImage(named: "\(View[indexPath.item].image)")
-            cell.label.text = View[indexPath.item].label
-         */
-            
             cell.imageView.image = UIImage(named: "\(myView[indexPath.item].image)")
             cell.label.text = myView[indexPath.item].label
             return cell
-        }
-        //second CollectionView
-        else {
+        } else {
             let cellb = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryReusableCell", for: indexPath as IndexPath) as! CollectionViewCell
             cellb.contentView.layer.cornerRadius = 10.0
             cellb.contentView.layer.borderWidth = 1.0
@@ -158,20 +136,16 @@ class ViewController: UIViewController , UICollectionViewDataSource , UICollecti
             return Cat.count
         }
     }
-    
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             if collectionView == self.collectionView {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
                     self!.performSegue(withIdentifier: "mainToProductVC", sender: nil)
                     }
-                
                 selam.selllabel = "\(myView[indexPath.item].label)"
                 selam.sellimage = "\(myView[indexPath.item].image)"
                 selam.sellinformation = "\(myView[indexPath.item].information)"
                 selam.sellprice = Int(myView[indexPath.item].price)
                 selam.sellnumber = Int(myView[indexPath.item].number)
-     
-                print("You selected cell #\(indexPath.item)!")
             }else {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
                     myView.removeAll()
@@ -179,17 +153,12 @@ class ViewController: UIViewController , UICollectionViewDataSource , UICollecti
                     for element in View {
                         if element.category == self!.category {
                             myView.append(element)
-                            print("oldu")
-                            print("You selected cell #\(indexPath.item)!")
                         }else {
                         }
                     }
-                    print("sayısı \(myView.count)")
                     self!.collectionView.reloadData()
                 }
-                
             }
-            
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "mainToProductVC" {

@@ -14,6 +14,7 @@ import GoogleSignInSwift
 class LikeViewController: UIViewController, UITableViewDelegate ,UITableViewDataSource {
 
     @IBOutlet var tableView: UITableView!
+    let defaults = UserDefaults.standard
     let db = Firestore.firestore()
     override func viewDidLoad() {
         myNewContentArray = []
@@ -21,24 +22,15 @@ class LikeViewController: UIViewController, UITableViewDelegate ,UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
-        
-        let docRef = db.collection("likedNumber").document("LA")
-        docRef.getDocument { [self] (document, error) in
-            if let document = document, document.exists {
-                let dataDescription = document.data()
-                selam.likeArray = dataDescription?["number"] as! Array
-                print(selam.likeArray)
-            } else {
-                print("Document does not exist")
-            }
+        if let item = defaults.array(forKey: "liked") as? [Int] {
+            selam.likeArray = item
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
-            self!.getdoc()
+        getdoc()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
             self!.tableView.reloadData()
             }
         
     }
-    
     func getdoc() {
         for number in selam.likeArray {
             for mynumber in View {
@@ -52,14 +44,19 @@ class LikeViewController: UIViewController, UITableViewDelegate ,UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell" , for: indexPath) as! TableViewCell
-
-        
+        cell.label.text = myNewContentArray[indexPath.item].label
+        URLSession.shared.dataTask(with: URL(string: myNewContentArray[indexPath.item].image)!) { (data, response, error) in
+          // Error handling...
+          guard let imageData = data else { return }
+          DispatchQueue.main.async {
+              cell.imageView!.image = UIImage(data: imageData)
+          }
+        }.resume()
  
         return cell
         
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let numberr = Int(3)
-        return numberr
+        return myNewContentArray.count
     }
 }
