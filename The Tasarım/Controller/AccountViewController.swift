@@ -20,6 +20,7 @@ class AccountViewController: UIViewController {
     @IBOutlet var usernameLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.scrollEdgeAppearance = UINavigationBarAppearance()
         let user = Auth.auth().currentUser?.email
         if Auth.auth().currentUser != nil {
             

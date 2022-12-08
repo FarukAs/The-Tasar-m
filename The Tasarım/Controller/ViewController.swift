@@ -11,66 +11,54 @@ import FirebaseFirestore
 import FirebaseAuth
 import GoogleSignIn
 import GoogleSignInSwift
-
 class ViewController: UIViewController , UICollectionViewDataSource , UICollectionViewDelegate {
     
-    @IBOutlet var scrollView: UIScrollView!
+    @IBOutlet var categoryCollectionView: UICollectionView!
+    
+    var delegate: DataCollectionProtocol?
+    var index: IndexPath?
+    
+    var category = Int(1)
     let db = Firestore.firestore()
 
     @IBOutlet var collectionView: UICollectionView!
-    @IBOutlet var firstView: UIView!
-    @IBOutlet var secondView: UIView!
-    @IBOutlet var thirdView: UIView!
-    @IBOutlet var fourthView: UIView!
-    @IBOutlet var sixthView: UIView!
-    @IBOutlet var seventhView: UIView!
-    @IBOutlet var eighthView: UIView!
-    @IBOutlet var ninthView: UIView!
-    @IBOutlet var fifthView: UIView!
-    @IBOutlet var tenthView: UIView!
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        views(viewdesign: firstView)
-        views(viewdesign: secondView)
-        views(viewdesign: thirdView)
-        views(viewdesign: fourthView)
-        views(viewdesign: fifthView)
-        views(viewdesign: sixthView)
-        views(viewdesign: seventhView)
-        views(viewdesign: eighthView)
-        views(viewdesign: ninthView)
-        views(viewdesign: tenthView)
-       
+
+        
+        
         self.hideKeyboardWhenTappedAround()
         collectionView.reloadData()
-        print("test")
-       /* db.collection("products").addSnapshotListener() { (querySnapshot, err) in
-            if let e = err {
-                print(e)
-            } else {
-                
-                print(View.count)
-                for doc in querySnapshot!.documents {
-                    let data = doc.data()
-                    if let image = data["image"] ,      let label = data["label"] {
-                        
-                        let mylabel = [label]
-                        let myimage = [image]
-                        View.append(Content(image: "\(myimage)", label:"\(mylabel)"))
-                        
-                        print(View)
-                        print(View.count)
-print("en son bu")
-                    }
-                }
+
+        for element in View {
+            if element.category == category {
+                myView.remove(at: 0)
+                myView.append(element)
+                print("oldu")
+                print(myView)
+            }else {
             }
         }
-        */
+        myView.removeAll()
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ReusableCell")
+        categoryCollectionView.delegate = self
+        categoryCollectionView.dataSource = self
+        categoryCollectionView.register(UINib(nibName: "CategoryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CategoryReusableCell")
+        let itemCount = categoryCollectionView.numberOfItems(inSection: 0)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+            self!.categoryCollectionView.allowsSelection = true
+                    if itemCount > 0 {
+                        self!.categoryCollectionView.selectItem(at: IndexPath(item: 2, section: 0), animated: true, scrollPosition: .centeredHorizontally)
+                        print(itemCount)
+                        print("htttt")
+                    }else {
+                        print("hata")
+                    }
+            }
+        
     }
     @IBAction func accountButton(_ sender: UIButton) {
         if Auth.auth().currentUser != nil {
@@ -95,65 +83,113 @@ print("en son bu")
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
+
+
+    @IBAction func likeButton(_ sender: UIButton) {
+        performSegue(withIdentifier: "mainToLikeVC", sender: nil)
+    }
     
-    
-    
-    
-    
-    func views(viewdesign: UIView) {
-        viewdesign.layer.cornerRadius = 18
-        viewdesign.layer.shadowColor = UIColor.black.cgColor
-        viewdesign.layer.shadowOffset = CGSize(width: 5, height: 5)
-        viewdesign.layer.shadowRadius = 10
-        viewdesign.layer.shadowOpacity = 0.3
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        //first Collection  View
+        
+        if collectionView == self.collectionView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReusableCell", for: indexPath as IndexPath) as! CollectionViewCell
+            
+            cell.layer.cornerRadius = 5.0
+            cell.layer.shadowColor = UIColor.black.cgColor
+            cell.layer.shadowOffset = CGSize(width: 5, height: 5)
+            cell.layer.shadowRadius = 5.0
+            cell.layer.shadowOpacity = 0.5
+            cell.layer.masksToBounds = false
+            URLSession.shared.dataTask(with: URL(string: myView[indexPath.item].image)!) { (data, response, error) in
+              // Error handling...
+              guard let imageData = data else { return }
+              DispatchQueue.main.async {
+                  cell.imageView.image = UIImage(data: imageData)
+              }
+            }.resume()
+            
+      /*      switch category {
+                case 1:
+                print("değişti")
+                
+            default:
+                cell.label.text = "\(View[indexPath.item].label)"
+                cell.imageView.image = UIImage(named: "\(View[indexPath.item].image)")
+            }
+
+         */
+         /*   cell.imageView.image = UIImage(named: "\(View[indexPath.item].image)")
+            cell.label.text = View[indexPath.item].label
+         */
+            
+            cell.imageView.image = UIImage(named: "\(myView[indexPath.item].image)")
+            cell.label.text = myView[indexPath.item].label
+            return cell
+        }
+        //second CollectionView
+        else {
+            let cellb = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryReusableCell", for: indexPath as IndexPath) as! CollectionViewCell
+            cellb.contentView.layer.cornerRadius = 10.0
+            cellb.contentView.layer.borderWidth = 1.0
+            cellb.contentView.layer.borderColor = UIColor.clear.cgColor
+            cellb.contentView.layer.masksToBounds = true
+
+            cellb.layer.shadowColor = UIColor.lightGray.cgColor
+            cellb.layer.shadowOffset = CGSize(width: 0, height: 2.0)
+            cellb.layer.shadowRadius = 10.0
+            cellb.layer.shadowOpacity = 1.0
+            cellb.layer.masksToBounds = false
+            cellb.layer.shadowPath = UIBezierPath(roundedRect: cellb.bounds, cornerRadius: cellb.contentView.layer.cornerRadius).cgPath
+            cellb.layer.backgroundColor = UIColor.clear.cgColor
+            
+            cellb.imageView.image = UIImage(named: "\(Cat[indexPath.item].image)")
+            cellb.label.text = Cat[indexPath.item].label
+            
+            return cellb
+        }
+        
     }
     @objc func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return View.count
-        
+        if collectionView == self.collectionView {
+            return myView.count
+        } else {
+            return Cat.count
+        }
     }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReusableCell", for: indexPath as IndexPath) as! CollectionViewCell
-        
-
-        cell.label.text = "\(View[indexPath.item].label)"
-        cell.imageView.image = UIImage(named: "\(View[indexPath.item].image)")
-        
-
-        cell.layer.cornerRadius = 5.0
-        cell.layer.shadowColor = UIColor.black.cgColor
-        cell.layer.shadowOffset = CGSize(width: 5, height: 5)
-        cell.layer.shadowRadius = 5.0
-        cell.layer.shadowOpacity = 0.5
-        cell.layer.masksToBounds = false
-
-
-        URLSession.shared.dataTask(with: URL(string: View[indexPath.item].image)!) { (data, response, error) in
-          // Error handling...
-          guard let imageData = data else { return }
-
-          DispatchQueue.main.async {
-              cell.imageView.image = UIImage(data: imageData)
-          }
-        }.resume()
-      
-        
-        return cell
-    }
-
     
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // handle tap events
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
-                self!.performSegue(withIdentifier: "mainToProductVC", sender: nil)
+            if collectionView == self.collectionView {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
+                    self!.performSegue(withIdentifier: "mainToProductVC", sender: nil)
+                    }
+                
+                selam.selllabel = "\(myView[indexPath.item].label)"
+                selam.sellimage = "\(myView[indexPath.item].image)"
+                selam.sellinformation = "\(myView[indexPath.item].information)"
+                selam.sellprice = Int(myView[indexPath.item].price)
+                selam.sellnumber = Int(myView[indexPath.item].number)
+     
+                print("You selected cell #\(indexPath.item)!")
+            }else {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
+                    myView.removeAll()
+                    self!.category = indexPath.item
+                    for element in View {
+                        if element.category == self!.category {
+                            myView.append(element)
+                            print("oldu")
+                            print("You selected cell #\(indexPath.item)!")
+                        }else {
+                        }
+                    }
+                    print("sayısı \(myView.count)")
+                    self!.collectionView.reloadData()
                 }
+                
+            }
             
-            selam.selllabel = "\(View[indexPath.item].label)"
-            selam.sellimage = "\(View[indexPath.item].image)"
-            selam.sellinformation = "\(View[indexPath.item].information)"
-            selam.sellprice = Int(View[indexPath.item].price)
-            selam.sellnumber = Int(View[indexPath.item].number)
- 
-        print("You selected cell #\(indexPath.item)!")
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "mainToProductVC" {
@@ -163,6 +199,9 @@ print("en son bu")
             destinationVC.selectedinformation = selam.sellinformation
             destinationVC.selectedprice = selam.sellprice
             destinationVC.selectednumber = selam.sellnumber
+        }
+        if segue.identifier == "mainToLikeVC" {
+            let destinationVC = segue.destination as! LikeViewController
         }
    }
     
@@ -175,6 +214,7 @@ print("en son bu")
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
+    
 }
 extension UIImageView {
     func loadFrom(URLAddress: String) {
@@ -185,10 +225,19 @@ extension UIImageView {
         DispatchQueue.main.async { [weak self] in
             if let imageData = try? Data(contentsOf: url) {
                 if let loadedImage = UIImage(data: imageData) {
-                        self?.image = loadedImage
+                    self?.image = loadedImage
                 }
             }
         }
     }
+}
+extension ViewController: DataCollectionProtocol{ 
+    func deleteData(indx: Int) {
+        View.remove(at: indx)
+        collectionView.reloadData()
+    }
+}
+protocol DataCollectionProtocol{
+    func deleteData(indx: Int)
 }
 
