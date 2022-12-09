@@ -12,7 +12,7 @@ import FirebaseAuth
 import GoogleSignIn
 import GoogleSignInSwift
 class LikeViewController: UIViewController, UITableViewDelegate ,UITableViewDataSource {
-
+    
     @IBOutlet var tableView: UITableView!
     let defaults = UserDefaults.standard
     let db = Firestore.firestore()
@@ -33,15 +33,15 @@ class LikeViewController: UIViewController, UITableViewDelegate ,UITableViewData
         getdoc()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
             self!.tableView.reloadData()
-            }
+        }
         
     }
     func getdoc() {
         for number in selam.likeArray {
             for mynumber in View {
-                    if number == mynumber.number {
-                        myNewContentArray.append(mynumber)
-                        print(mynumber)
+                if number == mynumber.number {
+                    myNewContentArray.append(mynumber)
+                    print(mynumber)
                 }
             }
         }
@@ -51,13 +51,13 @@ class LikeViewController: UIViewController, UITableViewDelegate ,UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell" , for: indexPath) as! TableViewCell
         cell.label.text = myNewContentArray[indexPath.item].label
         URLSession.shared.dataTask(with: URL(string: myNewContentArray[indexPath.item].image)!) { (data, response, error) in
-          // Error handling...
-          guard let imageData = data else { return }
-          DispatchQueue.main.async {
-              cell.imageView!.image = UIImage(data: imageData)
-          }
+            // Error handling...
+            guard let imageData = data else { return }
+            DispatchQueue.main.async {
+                cell.imageView!.image = UIImage(data: imageData)
+            }
         }.resume()
- 
+        
         return cell
         
     }
@@ -84,5 +84,5 @@ class LikeViewController: UIViewController, UITableViewDelegate ,UITableViewData
             destinationVC.selectedprice = selam.sellprice
             destinationVC.selectednumber = selam.sellnumber
         }
-   }
+    }
 }

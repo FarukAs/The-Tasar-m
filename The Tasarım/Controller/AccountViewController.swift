@@ -52,9 +52,9 @@ class AccountViewController: UIViewController {
     }
     
     @IBAction func logOutButton(_ sender: UIButton) {
-
         
-         do {
+        
+        do {
             try Auth.auth().signOut()
             navigationController?.popToRootViewController(animated: true)
         } catch let signOutError as NSError {
@@ -62,6 +62,6 @@ class AccountViewController: UIViewController {
         }
         
     }
-
+    
     
 }

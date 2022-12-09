@@ -17,11 +17,11 @@ class ViewController: UIViewController , UICollectionViewDataSource , UICollecti
     let defaults = UserDefaults.standard
     var delegate: DataCollectionProtocol?
     var index: IndexPath?
-    var category = Int(1)
+    var category = Int(0)
     let db = Firestore.firestore()
-
+    
     @IBOutlet var collectionView: UICollectionView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let likedArray = defaults.array(forKey: "liked") as? [Int] {
@@ -33,14 +33,14 @@ class ViewController: UIViewController , UICollectionViewDataSource , UICollecti
         }
         self.hideKeyboardWhenTappedAround()
         collectionView.reloadData()
+        myView.removeAll()
         for element in View {
             if element.category == category {
-                myView.remove(at: 0)
                 myView.append(element)
             }else {
             }
         }
-        myView.removeAll()
+       
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ReusableCell")
@@ -50,12 +50,12 @@ class ViewController: UIViewController , UICollectionViewDataSource , UICollecti
         let itemCount = categoryCollectionView.numberOfItems(inSection: 0)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
             self!.categoryCollectionView.allowsSelection = true
-                    if itemCount > 0 {
-                        self!.categoryCollectionView.selectItem(at: IndexPath(item: 2, section: 0), animated: true, scrollPosition: .centeredHorizontally)
-                    }else {
-                        print("Error")
-                    }
+            if itemCount > 0 {
+                self!.categoryCollectionView.selectItem(at: IndexPath(item: 2, section: 0), animated: true, scrollPosition: .centeredHorizontally)
+            }else {
+                print("Error")
             }
+        }
         
     }
     @IBAction func accountButton(_ sender: UIButton) {
@@ -93,14 +93,16 @@ class ViewController: UIViewController , UICollectionViewDataSource , UICollecti
             cell.layer.shadowOpacity = 0.5
             cell.layer.masksToBounds = false
             URLSession.shared.dataTask(with: URL(string: myView[indexPath.item].image)!) { (data, response, error) in
-              guard let imageData = data else { return }
-              DispatchQueue.main.async {
-                  cell.imageView.image = UIImage(data: imageData)
-              }
+                guard let imageData = data else { return }
+                DispatchQueue.main.async {
+                    cell.imageView.image = UIImage(data: imageData)
+                }
             }.resume()
-
+            
             cell.imageView.image = UIImage(named: "\(myView[indexPath.item].image)")
             cell.label.text = myView[indexPath.item].label
+            
+          
             return cell
         } else {
             let cellb = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryReusableCell", for: indexPath as IndexPath) as! CollectionViewCell
@@ -108,7 +110,7 @@ class ViewController: UIViewController , UICollectionViewDataSource , UICollecti
             cellb.contentView.layer.borderWidth = 1.0
             cellb.contentView.layer.borderColor = UIColor.clear.cgColor
             cellb.contentView.layer.masksToBounds = true
-
+            
             cellb.layer.shadowColor = UIColor.lightGray.cgColor
             cellb.layer.shadowOffset = CGSize(width: 0, height: 2.0)
             cellb.layer.shadowRadius = 10.0
@@ -120,6 +122,7 @@ class ViewController: UIViewController , UICollectionViewDataSource , UICollecti
             cellb.imageView.image = UIImage(named: "\(Cat[indexPath.item].image)")
             cellb.label.text = Cat[indexPath.item].label
             
+        
             return cellb
         }
         
@@ -131,29 +134,33 @@ class ViewController: UIViewController , UICollectionViewDataSource , UICollecti
             return Cat.count
         }
     }
-        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            if collectionView == self.collectionView {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
-                    self!.performSegue(withIdentifier: "mainToProductVC", sender: nil)
-                    }
-                selam.selllabel = "\(myView[indexPath.item].label)"
-                selam.sellimage = "\(myView[indexPath.item].image)"
-                selam.sellinformation = "\(myView[indexPath.item].information)"
-                selam.sellprice = Int(myView[indexPath.item].price)
-                selam.sellnumber = Int(myView[indexPath.item].number)
-            }else {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
-                    myView.removeAll()
-                    self!.category = indexPath.item
-                    for element in View {
-                        if element.category == self!.category {
-                            myView.append(element)
-                        }else {
-                        }
-                    }
-                    self!.collectionView.reloadData()
-                }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == self.collectionView {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
+                self!.performSegue(withIdentifier: "mainToProductVC", sender: nil)
             }
+            selam.selllabel = "\(myView[indexPath.item].label)"
+            selam.sellimage = "\(myView[indexPath.item].image)"
+            selam.sellinformation = "\(myView[indexPath.item].information)"
+            selam.sellprice = Int(myView[indexPath.item].price)
+            selam.sellnumber = Int(myView[indexPath.item].number)
+        }else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
+                myView.removeAll()
+                if myView.count == 0 {
+                    let indexPath1 = IndexPath(item: 0, section: 0)
+                    self!.collectionView.scrollToItem(at: indexPath1, at: .top, animated: false)
+                }
+                self!.category = indexPath.item
+                for element in View {
+                    if element.category == self!.category {
+                        myView.append(element)
+                    }else {
+                    }
+                }
+                self!.collectionView.reloadData()
+            }
+        }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "mainToProductVC" {
@@ -167,7 +174,7 @@ class ViewController: UIViewController , UICollectionViewDataSource , UICollecti
         if segue.identifier == "mainToLikeVC" {
             let destinationVC = segue.destination as! LikeViewController
         }
-   }
+    }
     
     
     func hideKeyboardWhenTappedAround() {

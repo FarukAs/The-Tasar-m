@@ -46,16 +46,16 @@ class ProductViewController: UIViewController {
         }
         print(selectedimage)
         URLSession.shared.dataTask(with: URL(string: selectedimage)!) { (data, response, error) in
-         
-          guard let imageData = data else { return }
-
-          DispatchQueue.main.async {
-              self.imageView.image = UIImage(data: imageData)
-          }
+            
+            guard let imageData = data else { return }
+            
+            DispatchQueue.main.async {
+                self.imageView.image = UIImage(data: imageData)
+            }
         }.resume()
     }
     
-
+    
     @IBAction func likeButton(_ sender: UIButton) {
         if likeButtonOutlet.currentImage == UIImage(systemName: "heart") {
             likeButtonOutlet.setImage(UIImage(systemName: "heart.fill"), for: .normal)
@@ -68,7 +68,7 @@ class ProductViewController: UIViewController {
             selam.likeArray.removeAll(where: { $0 == self.selectednumber })
             defaults.set(selam.likeArray, forKey: "liked")
         }
- 
+        
     }
-
+    
 }

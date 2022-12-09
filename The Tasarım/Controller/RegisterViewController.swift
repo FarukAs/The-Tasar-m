@@ -70,7 +70,7 @@ class RegisterViewController: UIViewController , UITextFieldDelegate {
         }; if password == "" {
             print("şifre giriniz")
         }
-
+        
     }
     
     func hideKeyboardWhenTappedAround() {
