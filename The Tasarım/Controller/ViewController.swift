@@ -31,11 +31,8 @@ class ViewController: UIViewController , UICollectionViewDataSource , UICollecti
             defaults.set(likedArray, forKey: "liked")
             selam.likeArray = likedArray
         }
-        print("sssssa\(selam.likeArray)")
-        
         self.hideKeyboardWhenTappedAround()
         collectionView.reloadData()
-
         for element in View {
             if element.category == category {
                 myView.remove(at: 0)
@@ -56,7 +53,7 @@ class ViewController: UIViewController , UICollectionViewDataSource , UICollecti
                     if itemCount > 0 {
                         self!.categoryCollectionView.selectItem(at: IndexPath(item: 2, section: 0), animated: true, scrollPosition: .centeredHorizontally)
                     }else {
-                        print("hata")
+                        print("Error")
                     }
             }
         
@@ -96,7 +93,6 @@ class ViewController: UIViewController , UICollectionViewDataSource , UICollecti
             cell.layer.shadowOpacity = 0.5
             cell.layer.masksToBounds = false
             URLSession.shared.dataTask(with: URL(string: myView[indexPath.item].image)!) { (data, response, error) in
-              // Error handling...
               guard let imageData = data else { return }
               DispatchQueue.main.async {
                   cell.imageView.image = UIImage(data: imageData)
