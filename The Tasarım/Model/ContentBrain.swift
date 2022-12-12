@@ -15,6 +15,10 @@ var Cat  = [Category(image: "kitchen", label: "Sofra & Mutfak"),
             Category(image: "evdekorasyon", label: "Ev Dekorasyon"),
             Category(image: "corap", label: "Çorap"),
             Category(image: "yapimarket", label: "Yapı Market"),]
+
+var myView = [Content(image: "", label: "", information: "", price: 1, number: 1, category: 1)]
+var myNewContentArray = [Content(image: "", label: "", information: "", price: 1, number: 1, category: 1)]
+var basket = [Content(image: "", label: "", information: "", price: 1, number: 1, category: 1)]
 var View = [
     Content(image: "https://cdn.dsmcdn.com/ty260/product/media/images/20211129/13/1108436/325162838/1/1_org_zoom.jpg", label: "IKEA Koncıs Paslanmaz Çelik Sarımsak Ezici" ,information: "Ebatlar uzunluk: 16 cm yararlı bilgiler içindeki parça çıkarılarak kolayca temizlenebilir. Sarımsaklar soyulmadan ezilebilir. Bakım talimatları sadece elde yıkanır. Malzeme paslanmaz çelik, çinko, fırça cilalı nikel kaplama." , price: 160,number: 0, category: 0),
     Content(image: "https://cdn.dsmcdn.com/ty234/product/media/images/20211110/14/173591489/302216347/1/1_org_zoom.jpg", label: "IKEA 12 Parça Baharatlık Seti Cam 12liPAKET", information: "Ebatlar: Çap:6.5cm , Yükseklik:8.5cm , Hacim: 15cl , Paket miktarı: 12 adet. IKEA 365+ IHÄRDIG ile kombine ederek baharatlarınızı doğrudan kavanozdan öğütebilirsiniz. Bakım Talimatları: Bulaşık makinesine girebilir. Malzeme: Cam, Polipropilen plastik ", price: 272,number: 1, category: 0),
@@ -112,5 +116,3 @@ var View = [
     Content(image: "https://cdn.dsmcdn.com/ty266/product/media/images/20211207/21/6646255/332375518/1/1_org_zoom.jpg", label: "TheTasarım Slibb Banyo Askısı", information: "Ebatlar Paket miktarı: 8 adet", price: 86, number: 92, category: 2)
 ]
 
-var myView = [Content(image: "", label: "", information: "", price: 1, number: 1, category: 1)]
-var myNewContentArray = [Content(image: "", label: "", information: "", price: 1, number: 1, category: 1)]

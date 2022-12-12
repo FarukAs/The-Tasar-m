@@ -26,7 +26,7 @@ class LikeViewController: UIViewController, UITableViewDelegate ,UITableViewData
         myNewContentArray = []
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
+        tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TBReusableCell")
         if let item = defaults.array(forKey: "liked") as? [Int] {
             selam.likeArray = item
         }
@@ -48,7 +48,7 @@ class LikeViewController: UIViewController, UITableViewDelegate ,UITableViewData
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell" , for: indexPath) as! TableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TBReusableCell" , for: indexPath) as! TableViewCell
         cell.label.text = myNewContentArray[indexPath.item].label
         URLSession.shared.dataTask(with: URL(string: myNewContentArray[indexPath.item].image)!) { (data, response, error) in
             // Error handling...

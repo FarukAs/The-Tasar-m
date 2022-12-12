@@ -43,6 +43,8 @@
 		9DD110E32935E78D008B651A /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DD110E12935E78D008B651A /* CollectionViewCell.xib */; };
 		9DD110E52935E79B008B651A /* ViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD110E42935E79B008B651A /* ViewContent.swift */; };
 		9DD110E72935E7A6008B651A /* ContentBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD110E62935E7A6008B651A /* ContentBrain.swift */; };
+		9DDB94AA2947A48A0027F648 /* BasketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDB94A82947A48A0027F648 /* BasketTableViewCell.swift */; };
+		9DDB94AB2947A48A0027F648 /* BasketTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DDB94A92947A48A0027F648 /* BasketTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +97,8 @@
 		9DD110E12935E78D008B651A /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		9DD110E42935E79B008B651A /* ViewContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewContent.swift; sourceTree = "<group>"; };
 		9DD110E62935E7A6008B651A /* ContentBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBrain.swift; sourceTree = "<group>"; };
+		9DDB94A82947A48A0027F648 /* BasketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketTableViewCell.swift; sourceTree = "<group>"; };
+		9DDB94A92947A48A0027F648 /* BasketTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BasketTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +200,7 @@
 				9D2D28D3293DBA9A0012FF6A /* CategoryCollectionView */,
 				9D219CB12947312D002195A6 /* BasketViewCell */,
 				9D88B913293F607300E9E6C5 /* TableViewCell */,
+				9DDB94A72947A4720027F648 /* BasketTableViewCell */,
 				9DD110D92935E71C008B651A /* Model */,
 				9DD110A62935E682008B651A /* AppDelegate.swift */,
 				9DD110A82935E682008B651A /* SceneDelegate.swift */,
@@ -263,6 +268,15 @@
 				9DD110E62935E7A6008B651A /* ContentBrain.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		9DDB94A72947A4720027F648 /* BasketTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				9DDB94A82947A48A0027F648 /* BasketTableViewCell.swift */,
+				9DDB94A92947A48A0027F648 /* BasketTableViewCell.xib */,
+			);
+			path = BasketTableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -392,6 +406,7 @@
 				9D88B917293F60AB00E9E6C5 /* TableViewCell.xib in Resources */,
 				9DD110AE2935E682008B651A /* Main.storyboard in Resources */,
 				9D3D42492935ED54009B680C /* GoogleService-Info.plist in Resources */,
+				9DDB94AB2947A48A0027F648 /* BasketTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +432,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D219CB429473152002195A6 /* BasketCollectionViewCell.swift in Sources */,
+				9DDB94AA2947A48A0027F648 /* BasketTableViewCell.swift in Sources */,
 				9D88B916293F60AB00E9E6C5 /* TableViewCell.swift in Sources */,
 				9DD110AB2935E682008B651A /* ViewController.swift in Sources */,
 				9D219CB02945F6E5002195A6 /* BasketViewController.swift in Sources */,

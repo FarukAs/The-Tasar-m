@@ -19,7 +19,7 @@ class ViewController: UIViewController , UICollectionViewDataSource , UICollecti
     var index: IndexPath?
     var category = Int(0)
     let db = Firestore.firestore()
-    
+
     @IBOutlet var collectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -31,6 +31,8 @@ class ViewController: UIViewController , UICollectionViewDataSource , UICollecti
             defaults.set(likedArray, forKey: "liked")
             selam.likeArray = likedArray
         }
+        
+        print("asal\(selam.basketArray)")
         self.hideKeyboardWhenTappedAround()
         collectionView.reloadData()
         myView.removeAll()

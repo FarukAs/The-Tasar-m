@@ -42,6 +42,7 @@ struct selam {
     static var sellprice = Int(0)
     static var sellnumber = Int(0)
     static var likeArray = [9999]
+    static var basketArray = [99999]
 }
 
 

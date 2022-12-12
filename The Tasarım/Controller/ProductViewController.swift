@@ -34,16 +34,20 @@ class ProductViewController: UIViewController {
         addBasketButton.layer.shadowOpacity = 0.3
         informationLabel.numberOfLines = 0
         informationLabel.sizeToFit()
-        
         labelone.text = selectedlabel
         priceLabel.text = "\(selectedprice) TL"
         informationLabel.text = selectedinformation
-        
+        for number in selam.basketArray {
+            if number == selectednumber {
+                addBasketButton.titleLabel!.text = "Sepete eklendi"
+            }
+        }
         for item1 in selam.likeArray {
             if selectednumber == item1 {
                 likeButtonOutlet.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             }
         }
+        
         print(selectedimage)
         URLSession.shared.dataTask(with: URL(string: selectedimage)!) { (data, response, error) in
             
@@ -54,7 +58,28 @@ class ProductViewController: UIViewController {
             }
         }.resume()
     }
-    
+    @IBAction func addToBasket(_ sender: UIButton) {
+        print(selectednumber)
+        for number in selam.basketArray {
+            if number == selectednumber {
+                selam.basketArray.removeAll(where: { $0 == selectednumber })
+                defaults.set(selam.basketArray, forKey: "basket")
+                print(selam.basketArray)
+                UIView.transition(with: sender, duration: 0.5, options: .transitionFlipFromTop, animations: {
+                    sender.setTitle("Sepete ekle", for: .normal)
+                }, completion: nil)
+            }else  {
+                selam.basketArray.append(selectednumber)
+                let uniqueNumbers = Set(selam.basketArray)
+                let numbersWithoutDuplicates = Array(uniqueNumbers)
+                print("kayıt\(numbersWithoutDuplicates)")
+                defaults.set(numbersWithoutDuplicates, forKey: "basket")
+                UIView.transition(with: sender, duration: 0.5, options: .transitionFlipFromTop, animations: {
+                    sender.setTitle("Sepete eklendi", for: .normal)
+                }, completion: nil)
+            }
+        }
+    }
     
     @IBAction func likeButton(_ sender: UIButton) {
         if likeButtonOutlet.currentImage == UIImage(systemName: "heart") {
