@@ -105,7 +105,7 @@ class ViewController: UIViewController , UICollectionViewDataSource , UICollecti
           
             return cell
         } else {
-            let cellb = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryReusableCell", for: indexPath as IndexPath) as! CollectionViewCell
+            let cellb = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryReusableCell", for: indexPath as IndexPath) as! CategoryCollectionViewCell
             cellb.contentView.layer.cornerRadius = 10.0
             cellb.contentView.layer.borderWidth = 1.0
             cellb.contentView.layer.borderColor = UIColor.clear.cgColor

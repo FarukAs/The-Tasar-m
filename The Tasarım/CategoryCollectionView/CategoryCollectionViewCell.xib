@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoryReusableCell" id="f3O-i4-dtM" customClass="CollectionViewCell" customModule="The_Tasarım" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoryReusableCell" id="f3O-i4-dtM" customClass="CategoryCollectionViewCell" customModule="The_Tasarım" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="75" height="110"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -51,9 +51,9 @@
             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <size key="customSize" width="180" height="115"/>
             <connections>
-                <outlet property="imageView" destination="lmD-vE-zvl" id="yBy-Ht-7YZ"/>
-                <outlet property="label" destination="caO-Cy-QKk" id="rX5-f9-Gfv"/>
-                <outlet property="view" destination="ytM-j2-QM7" id="Pr3-2X-bTk"/>
+                <outlet property="imageView" destination="lmD-vE-zvl" id="Cp2-OF-gf8"/>
+                <outlet property="label" destination="caO-Cy-QKk" id="oIp-2w-Rra"/>
+                <outlet property="view" destination="ytM-j2-QM7" id="AzP-Os-YgZ"/>
             </connections>
             <point key="canvasLocation" x="196.18320610687022" y="42.253521126760567"/>
         </collectionViewCell>

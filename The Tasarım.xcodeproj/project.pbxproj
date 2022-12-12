@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D219CB02945F6E5002195A6 /* BasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D219CAF2945F6E5002195A6 /* BasketViewController.swift */; };
+		9D219CB429473152002195A6 /* BasketCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D219CB229473152002195A6 /* BasketCollectionViewCell.swift */; };
+		9D219CB529473152002195A6 /* BasketCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D219CB329473152002195A6 /* BasketCollectionViewCell.xib */; };
 		9D2D28D6293DBAC40012FF6A /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2D28D4293DBAC40012FF6A /* CategoryCollectionViewCell.swift */; };
 		9D2D28D7293DBAC40012FF6A /* CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D2D28D5293DBAC40012FF6A /* CategoryCollectionViewCell.xib */; };
 		9D3D423B2935ECB3009B680C /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 9D3D423A2935ECB3009B680C /* FirebaseAnalytics */; };
@@ -60,6 +63,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9D219CAF2945F6E5002195A6 /* BasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketViewController.swift; sourceTree = "<group>"; };
+		9D219CB229473152002195A6 /* BasketCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketCollectionViewCell.swift; sourceTree = "<group>"; };
+		9D219CB329473152002195A6 /* BasketCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BasketCollectionViewCell.xib; sourceTree = "<group>"; };
 		9D2D28D4293DBAC40012FF6A /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		9D2D28D5293DBAC40012FF6A /* CategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		9D3D42462935ED18009B680C /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = credentials.plist; path = ../../../Downloads/credentials.plist; sourceTree = "<group>"; };
@@ -125,6 +131,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9D219CB12947312D002195A6 /* BasketViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				9D219CB229473152002195A6 /* BasketCollectionViewCell.swift */,
+				9D219CB329473152002195A6 /* BasketCollectionViewCell.xib */,
+			);
+			path = BasketViewCell;
+			sourceTree = "<group>";
+		};
 		9D2D28D3293DBA9A0012FF6A /* CategoryCollectionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,6 +194,7 @@
 				9DD110D72935E69B008B651A /* Views */,
 				9DD110D82935E70E008B651A /* CollectionCell */,
 				9D2D28D3293DBA9A0012FF6A /* CategoryCollectionView */,
+				9D219CB12947312D002195A6 /* BasketViewCell */,
 				9D88B913293F607300E9E6C5 /* TableViewCell */,
 				9DD110D92935E71C008B651A /* Model */,
 				9DD110A62935E682008B651A /* AppDelegate.swift */,
@@ -218,6 +234,7 @@
 				9DD110DE2935E771008B651A /* RegisterViewController.swift */,
 				9D3F632229388A150026278C /* ProductViewController.swift */,
 				9D88B911293F5EC800E9E6C5 /* LikeViewController.swift */,
+				9D219CAF2945F6E5002195A6 /* BasketViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -371,6 +388,7 @@
 				9DD110B02935E683008B651A /* Assets.xcassets in Resources */,
 				9DD110E32935E78D008B651A /* CollectionViewCell.xib in Resources */,
 				9D3D42472935ED18009B680C /* credentials.plist in Resources */,
+				9D219CB529473152002195A6 /* BasketCollectionViewCell.xib in Resources */,
 				9D88B917293F60AB00E9E6C5 /* TableViewCell.xib in Resources */,
 				9DD110AE2935E682008B651A /* Main.storyboard in Resources */,
 				9D3D42492935ED54009B680C /* GoogleService-Info.plist in Resources */,
@@ -398,8 +416,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D219CB429473152002195A6 /* BasketCollectionViewCell.swift in Sources */,
 				9D88B916293F60AB00E9E6C5 /* TableViewCell.swift in Sources */,
 				9DD110AB2935E682008B651A /* ViewController.swift in Sources */,
+				9D219CB02945F6E5002195A6 /* BasketViewController.swift in Sources */,
 				9DD110A72935E682008B651A /* AppDelegate.swift in Sources */,
 				9DD110E52935E79B008B651A /* ViewContent.swift in Sources */,
 				9DD110DB2935E75A008B651A /* AccountViewController.swift in Sources */,
