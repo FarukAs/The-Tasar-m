@@ -16,13 +16,14 @@ class BasketCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         addToBasketOutlet.layer.cornerRadius = 18
-        addToBasketOutlet.layer.shadowColor = UIColor.black.cgColor
-        addToBasketOutlet.layer.shadowOffset = CGSize(width: 2, height: 2)
-        addToBasketOutlet.layer.shadowRadius = 10
-        addToBasketOutlet.layer.shadowOpacity = 0.3
+        
     }
 
     @IBAction func addToBasket(_ sender: UIButton) {
-        print("selectdbasket")
+        if addToBasketOutlet.titleLabel!.text == "Sepete ekle" {
+            UIView.transition(with: sender, duration: 0.5, options: .transitionFlipFromTop, animations: {
+                    sender.setTitle("Sepete eklendi", for: .normal)
+                }, completion: nil)
+        }
     }
 }

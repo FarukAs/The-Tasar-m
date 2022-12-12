@@ -12,6 +12,9 @@ class BasketViewController: UIViewController , UICollectionViewDelegate,UICollec
     
     @IBOutlet var collectionView: UICollectionView!
     let defaults = UserDefaults.standard
+    
+    var inBasket = [0]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let item = defaults.array(forKey: "liked") as? [Int] {
@@ -22,6 +25,8 @@ class BasketViewController: UIViewController , UICollectionViewDelegate,UICollec
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "BasketCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "BasketReusableCell")
+        print(collectionView.frame)
+
     }
     func getdoc() {
         for number in selam.likeArray {
@@ -32,6 +37,21 @@ class BasketViewController: UIViewController , UICollectionViewDelegate,UICollec
                 }
             }
         }
+    }
+    func collectionviewayarlayacam() {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.minimumLineSpacing = 10 // hücreler arasındaki minimum boşluk
+        flowLayout.minimumInteritemSpacing = 10 // hücrelerin yan yana olması durumunda aralarındaki minimum boşluk
+        flowLayout.sectionInset = UIEdgeInsets(top: 5, left: 20, bottom: 0, right: 0) // hücrelerin collection view'ın içerisindeki konumlarına göre boşlukları
+
+        // hücrelerin boyutunu ayarlama
+        flowLayout.estimatedItemSize = CGSize(width: 150, height: 315)
+        flowLayout.scrollDirection = .vertical
+        collectionView.backgroundColor = .blue
+        // collection view'ımıza flow layout'ı atama
+        collectionView.collectionViewLayout = flowLayout
+        collectionView.frame.size = flowLayout.collectionViewContentSize
+        collectionView.isScrollEnabled = true
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return myNewContentArray.count
