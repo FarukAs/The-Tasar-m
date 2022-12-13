@@ -25,6 +25,7 @@ class ProductViewController: UIViewController {
     var selectedinformation = ""
     var selectedprice = Int(0)
     var selectednumber = Int(0)
+    var inBasket = false
     override func viewDidLoad() {
         super.viewDidLoad()
         addBasketButton.layer.cornerRadius = 18
@@ -37,9 +38,13 @@ class ProductViewController: UIViewController {
         labelone.text = selectedlabel
         priceLabel.text = "\(selectedprice) TL"
         informationLabel.text = selectedinformation
+        if let item = defaults.array(forKey: "basket") as? [Int] {
+            selam.basketArray = item
+        }
         for number in selam.basketArray {
             if number == selectednumber {
                 addBasketButton.titleLabel!.text = "Sepete eklendi"
+                inBasket = true
             }
         }
         for item1 in selam.likeArray {
@@ -59,26 +64,26 @@ class ProductViewController: UIViewController {
         }.resume()
     }
     @IBAction func addToBasket(_ sender: UIButton) {
-        print(selectednumber)
-        for number in selam.basketArray {
-            if number == selectednumber {
-                selam.basketArray.removeAll(where: { $0 == selectednumber })
-                defaults.set(selam.basketArray, forKey: "basket")
-                print(selam.basketArray)
-                UIView.transition(with: sender, duration: 0.5, options: .transitionFlipFromTop, animations: {
-                    sender.setTitle("Sepete ekle", for: .normal)
-                }, completion: nil)
-            }else  {
-                selam.basketArray.append(selectednumber)
-                let uniqueNumbers = Set(selam.basketArray)
-                let numbersWithoutDuplicates = Array(uniqueNumbers)
-                print("kayıt\(numbersWithoutDuplicates)")
-                defaults.set(numbersWithoutDuplicates, forKey: "basket")
-                UIView.transition(with: sender, duration: 0.5, options: .transitionFlipFromTop, animations: {
-                    sender.setTitle("Sepete eklendi", for: .normal)
-                }, completion: nil)
-            }
+        if inBasket == true {
+            print(selam.basketArray)
+            selam.basketArray.removeAll(where: { $0 == selectednumber })
+            defaults.set(selam.basketArray, forKey: "basket")
+            print(selam.basketArray)
+            UIView.transition(with: sender, duration: 0.5, options: .transitionFlipFromTop, animations: {
+                sender.setTitle("Sepete ekle", for: .normal)
+            }, completion: nil)
+            inBasket = false
+        } else {
+            selam.basketArray.append(selectednumber)
+            let uniqueNumbers = Set(selam.basketArray)
+            let numbersWithoutDuplicates = Array(uniqueNumbers)
+            print("kayıt\(numbersWithoutDuplicates)")
+            defaults.set(numbersWithoutDuplicates, forKey: "basket")
+            UIView.transition(with: sender, duration: 0.5, options: .transitionFlipFromTop, animations: {
+                sender.setTitle("Sepete eklendi", for: .normal)
+            }, completion: nil)
         }
+        print(selectednumber)
     }
     
     @IBAction func likeButton(_ sender: UIButton) {
