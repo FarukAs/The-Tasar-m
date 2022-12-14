@@ -12,7 +12,6 @@ class BasketViewController: UIViewController , UICollectionViewDelegate,UICollec
     
     @IBOutlet var collectionView: UICollectionView!
     let defaults = UserDefaults.standard
-    
     @IBOutlet var firstView: UIView!
     @IBOutlet var topView: UIView!
     @IBOutlet var tableView: UITableView!
@@ -73,13 +72,8 @@ class BasketViewController: UIViewController , UICollectionViewDelegate,UICollec
                 cell.imageView.image = UIImage(data: imageData)
             }
         }.resume()
-        
         cell.label.text = myNewContentArray[indexPath.item].label
         return cell
-    }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("selected")
-        print(myNewContentArray)
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell" , for: indexPath) as! BasketTableViewCell
@@ -89,10 +83,37 @@ class BasketViewController: UIViewController , UICollectionViewDelegate,UICollec
                 cell.imageview.image = UIImage(data: imageData)
             }
         }.resume()
+        cell.priceLabel.text = "\(basket[indexPath.item].price) TL"
         cell.label.text = basket[indexPath.item].label
+
+        cell.plusButton.addTarget(self, action: #selector(plusButton(sender:)), for: .touchUpInside)
+        cell.plusButton.tag = indexPath.row
+        cell.trashButton.addTarget(self, action: #selector(trashButton(sender:)), for: .touchUpInside)
+        cell.trashButton.tag = indexPath.row
+        
+        let index = indexPath.item
+       
+        cell.numberOfProduct.text = "\(selam.productNumber["\(basket[indexPath.item].number)"]!)"
+        print("xxx\(selam.productNumber["\(basket[indexPath.item].number)"]!)")
+        
+        
+        
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return basket.count
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("selected")
+    }
+    @objc func plusButton(sender: UIButton){
+        let buttonTag = sender.tag
+      
+
+        tableView.reloadData()
+    }
+    @objc func trashButton(sender: UIButton){
+        let buttonTag = sender.tag
+        print("sss\(buttonTag)")
     }
 }

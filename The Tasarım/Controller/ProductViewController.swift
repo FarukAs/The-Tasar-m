@@ -82,6 +82,7 @@ class ProductViewController: UIViewController {
             UIView.transition(with: sender, duration: 0.5, options: .transitionFlipFromTop, animations: {
                 sender.setTitle("Sepete eklendi", for: .normal)
             }, completion: nil)
+            inBasket = true
         }
         print(selectednumber)
     }

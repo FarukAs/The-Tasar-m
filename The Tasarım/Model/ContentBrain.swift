@@ -10,7 +10,7 @@ import Foundation
 var Cat  = [Category(image: "kitchen", label: "Sofra & Mutfak"),
             Category(image: "evgerecleri", label: "Ev Gereçleri"),
             Category(image: "banyo", label: "Banyo"),
-            Category(image: "kirlent", label: "Moda, Giyim"),
+            Category(image: "kirlent", label: "Kırlent"),
             Category(image: "spor", label: "Spor Aletleri"),
             Category(image: "evdekorasyon", label: "Ev Dekorasyon"),
             Category(image: "corap", label: "Çorap"),
