@@ -41,6 +41,7 @@ class ProductViewController: UIViewController {
         if let item = defaults.array(forKey: "basket") as? [Int] {
             selam.basketArray = item
         }
+        print("şşş\(selam.basketArray)")
         for number in selam.basketArray {
             if number == selectednumber {
                 addBasketButton.titleLabel!.text = "Sepete eklendi"
@@ -73,6 +74,12 @@ class ProductViewController: UIViewController {
                 sender.setTitle("Sepete ekle", for: .normal)
             }, completion: nil)
             inBasket = false
+            selam.productNumber.removeValue(forKey: "\(selectednumber)")
+            do {
+                try db.collection("cities").document("LA").setData(selam.productNumber)
+            } catch let error {
+                print("Error writing city to Firestore: \(error)")
+            }
         } else {
             selam.basketArray.append(selectednumber)
             let uniqueNumbers = Set(selam.basketArray)
@@ -83,6 +90,13 @@ class ProductViewController: UIViewController {
                 sender.setTitle("Sepete eklendi", for: .normal)
             }, completion: nil)
             inBasket = true
+            selam.productNumber["\(selectednumber)"] = 1
+            do {
+                try db.collection("cities").document("LA").setData(selam.productNumber)
+            } catch let error {
+                print("Error writing city to Firestore: \(error)")
+            }
+            print("bb\(selam.productNumber)")
         }
         print(selectednumber)
     }

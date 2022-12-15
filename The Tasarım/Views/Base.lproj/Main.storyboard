@@ -173,6 +173,7 @@
                     <connections>
                         <outlet property="categoryCollectionView" destination="rXa-9a-iEN" id="PnD-BU-iC0"/>
                         <outlet property="collectionView" destination="31V-uC-a2Y" id="Zth-iJ-jg1"/>
+                        <outlet property="searchBar" destination="aWb-La-mrQ" id="CBD-dv-znj"/>
                         <segue destination="7yM-Jm-pVN" kind="show" identifier="toRegisterVC" id="7rB-oj-RhZ"/>
                         <segue destination="Pas-UE-Loq" kind="show" identifier="toAccountVC" id="vcd-8y-ohE"/>
                         <segue destination="aIc-59-xO1" kind="show" identifier="mainToProductVC" id="N7i-y8-T0t"/>
@@ -668,9 +669,6 @@
                                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
-                                                <connections>
-                                                    <action selector="addToBasket:" destination="aIc-59-xO1" eventType="touchUpInside" id="xFT-Mu-79j"/>
-                                                </connections>
                                             </button>
                                         </subviews>
                                     </view>
@@ -688,6 +686,7 @@
                         <outlet property="tableView" destination="8WI-6F-4QC" id="rJY-Z8-vjb"/>
                         <outlet property="topSecondView" destination="rDZ-3S-kf5" id="qOD-KN-c2D"/>
                         <outlet property="topView" destination="yCb-Ia-8u2" id="Ns4-Q4-6DB"/>
+                        <outlet property="totalPriceLabel" destination="Sfw-5V-4kV" id="BNw-TF-ykn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="69x-Da-Z9c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -697,7 +696,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="vcd-8y-ohE"/>
-        <segue reference="gbF-WT-QhO"/>
+        <segue reference="N7i-y8-T0t"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bell" catalog="system" width="125" height="128"/>

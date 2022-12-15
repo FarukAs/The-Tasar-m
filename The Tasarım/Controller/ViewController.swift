@@ -11,8 +11,9 @@ import FirebaseFirestore
 import FirebaseAuth
 import GoogleSignIn
 import GoogleSignInSwift
-class ViewController: UIViewController , UICollectionViewDataSource , UICollectionViewDelegate {
+class ViewController: UIViewController , UICollectionViewDataSource , UICollectionViewDelegate , UISearchBarDelegate {
     
+    @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var categoryCollectionView: UICollectionView!
     let defaults = UserDefaults.standard
     var delegate: DataCollectionProtocol?
@@ -31,8 +32,21 @@ class ViewController: UIViewController , UICollectionViewDataSource , UICollecti
             defaults.set(likedArray, forKey: "liked")
             selam.likeArray = likedArray
         }
-        
-        print("asal\(selam.basketArray)")
+        db.collection("cities").document("LA")
+            .addSnapshotListener { documentSnapshot, error in
+              guard let document = documentSnapshot else {
+                print("Error fetching document: \(error!)")
+                return
+              }
+                guard let data = document.data() as? [String:Int] else {
+                print("Document data was empty.")
+                return
+              }
+              print("Current data: \(data)")
+                selam.productNumber = data
+            }
+      
+        searchBar.delegate = collectionView as? any UISearchBarDelegate
         self.hideKeyboardWhenTappedAround()
         collectionView.reloadData()
         myView.removeAll()
@@ -42,7 +56,6 @@ class ViewController: UIViewController , UICollectionViewDataSource , UICollecti
             }else {
             }
         }
-       
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ReusableCell")
@@ -58,7 +71,7 @@ class ViewController: UIViewController , UICollectionViewDataSource , UICollecti
                 print("Error")
             }
         }
-        
+
     }
     @IBAction func accountButton(_ sender: UIButton) {
         if Auth.auth().currentUser != nil {
@@ -213,4 +226,6 @@ extension ViewController: DataCollectionProtocol{
 protocol DataCollectionProtocol{
     func deleteData(indx: Int)
 }
+
+
 

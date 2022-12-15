@@ -6,12 +6,19 @@
 //
 
 import UIKit
+import FirebaseCore
+import FirebaseFirestore
+import FirebaseAuth
+import GoogleSignIn
+import GoogleSignInSwift
 
 class BasketViewController: UIViewController , UICollectionViewDelegate,UICollectionViewDataSource , UITableViewDelegate, UITableViewDataSource {
-    
-    
+    @IBOutlet var totalPriceLabel: UILabel!
     @IBOutlet var collectionView: UICollectionView!
     let defaults = UserDefaults.standard
+    let db = Firestore.firestore()
+    var totalPrice = Int(0)
+    var myVar = Int()
     @IBOutlet var firstView: UIView!
     @IBOutlet var topView: UIView!
     @IBOutlet var tableView: UITableView!
@@ -38,6 +45,42 @@ class BasketViewController: UIViewController , UICollectionViewDelegate,UICollec
         tableView.dataSource = self
         tableView.register(UINib(nibName: "BasketTableViewCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
         print("asa\(selam.basketArray)")
+        
+        
+        for na in selam.basketArray {
+            for nam in View{
+                if na == nam.number {
+                    for namb in selam.productNumber {
+                        if namb.key ==  "\(na)" {
+                            myVar += namb.value * nam.price
+                        }
+                    }
+                    
+                }
+            }
+        }
+        self.totalPriceLabel.text = "\(myVar) TL"
+        
+        
+        
+        
+        
+ /*       for nu in View {
+            for numbera in selam.basketArray{
+                for num in selam.productNumber{
+                    if number.number == num {
+                        if nu.value == num {
+                            var myyy = number.price * nu.value
+                            myVar += myyy
+                            print("vv\(number.price)")
+                            print("vvv\(nu.value)")
+                        }
+                    }
+                    
+                }
+            }
+        }
+        */
         
     }
     func getlike() {
@@ -85,18 +128,29 @@ class BasketViewController: UIViewController , UICollectionViewDelegate,UICollec
         }.resume()
         cell.priceLabel.text = "\(basket[indexPath.item].price) TL"
         cell.label.text = basket[indexPath.item].label
-
+        
         cell.plusButton.addTarget(self, action: #selector(plusButton(sender:)), for: .touchUpInside)
         cell.plusButton.tag = indexPath.row
         cell.trashButton.addTarget(self, action: #selector(trashButton(sender:)), for: .touchUpInside)
         cell.trashButton.tag = indexPath.row
         
-        let index = indexPath.item
-       
-        cell.numberOfProduct.text = "\(selam.productNumber["\(basket[indexPath.item].number)"]!)"
-        print("xxx\(selam.productNumber["\(basket[indexPath.item].number)"]!)")
+
+        print("öö\(cell.trashButton.setImage(UIImage(systemName: "minus"), for: .normal))")
+        
+
+        let labelPrice = basket[indexPath.item].price
         
         
+        
+        let labelNumber = selam.productNumber["\(basket[indexPath.item].number)"]!
+        if labelNumber > 1 {
+                cell.trashButton.setImage(UIImage(systemName: "minus"), for: .normal)
+        } else {
+                cell.trashButton.setImage(UIImage(systemName: "trash"), for: .normal)
+        }
+        
+        cell.numberOfProduct.text =  "\(selam.productNumber["\(basket[indexPath.item].number)"]!)"
+        print("\(selam.productNumber["\(basket[indexPath.item].number)"]!)")
         
         return cell
     }
@@ -108,12 +162,27 @@ class BasketViewController: UIViewController , UICollectionViewDelegate,UICollec
     }
     @objc func plusButton(sender: UIButton){
         let buttonTag = sender.tag
-      
 
+        selam.productNumber["\(basket[buttonTag].number)"]! += 1
+        do {
+            try db.collection("cities").document("LA").setData(selam.productNumber)
+        } catch let error {
+            print("Error writing city to Firestore: \(error)")
+        }
         tableView.reloadData()
     }
     @objc func trashButton(sender: UIButton){
         let buttonTag = sender.tag
+        if selam.productNumber["\(basket[buttonTag].number)"]! > 1 {
+            selam.productNumber["\(basket[buttonTag].number)"]! -= 1
+        }
+        do {
+            try db.collection("cities").document("LA").setData(selam.productNumber)
+        } catch let error {
+            print("Error writing city to Firestore: \(error)")
+        }
+        tableView.reloadData()
         print("sss\(buttonTag)")
     }
 }
+
