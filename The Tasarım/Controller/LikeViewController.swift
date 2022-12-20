@@ -41,7 +41,6 @@ class LikeViewController: UIViewController, UITableViewDelegate ,UITableViewData
             for mynumber in View {
                 if number == mynumber.number {
                     myNewContentArray.append(mynumber)
-                    print(mynumber)
                 }
             }
         }

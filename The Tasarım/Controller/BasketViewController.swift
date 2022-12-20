@@ -19,6 +19,7 @@ class BasketViewController: UIViewController , UICollectionViewDelegate,UICollec
     let db = Firestore.firestore()
     var totalPrice = Int(0)
     var myVar = Int()
+    let currentEmail = AccountViewController().user
     @IBOutlet var firstView: UIView!
     @IBOutlet var topView: UIView!
     @IBOutlet var tableView: UITableView!
@@ -26,6 +27,7 @@ class BasketViewController: UIViewController , UICollectionViewDelegate,UICollec
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("xxxz\(String(describing: currentEmail))")
         if let item = defaults.array(forKey: "basket") as? [Int] {
             selam.basketArray = item
         }
@@ -36,17 +38,14 @@ class BasketViewController: UIViewController , UICollectionViewDelegate,UICollec
         }
         myNewContentArray = []
         basket = []
+        findMatchingContent()
         getlike()
-        getbasket()
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "BasketCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "BasketReusableCell")
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "BasketTableViewCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
-        print("asa\(selam.basketArray)")
-        
-        
         for na in selam.basketArray {
             for nam in View{
                 if na == nam.number {
@@ -55,53 +54,39 @@ class BasketViewController: UIViewController , UICollectionViewDelegate,UICollec
                             myVar += namb.value * nam.price
                         }
                     }
-                    
                 }
             }
         }
         self.totalPriceLabel.text = "\(myVar) TL"
-        
-        
-        
-        
-        
- /*       for nu in View {
-            for numbera in selam.basketArray{
-                for num in selam.productNumber{
-                    if number.number == num {
-                        if nu.value == num {
-                            var myyy = number.price * nu.value
-                            myVar += myyy
-                            print("vv\(number.price)")
-                            print("vvv\(nu.value)")
-                        }
-                    }
-                    
-                }
-            }
-        }
-        */
-        
     }
     func getlike() {
         for number in selam.basketArray {
             for mynumber in View {
                 if number == mynumber.number {
                     basket.append(mynumber)
-                    print(mynumber)
                 }
             }
         }
     }
-    func getbasket() {
-        for number in selam.likeArray {
-            for mynumber in View {
-                if number == mynumber.number {
-                    myNewContentArray.append(mynumber)
-                    print(mynumber)
-                }
-            }
+    func findMatchingContent() {
+        let likeSet = Set(selam.likeArray)
+        let basketSet = Set(selam.basketArray)
+      let difference = likeSet.subtracting(basketSet)
+
+      for number in difference {
+        for content in View {
+          if content.number == number {
+            myNewContentArray.append(content)
+            break
+          }
         }
+      }
+    }
+    @IBAction func confirmButton(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Başarılı", message: "Sepetin onaylandı.", preferredStyle: UIAlertController.Style.alert)
+        let okButton = UIAlertAction(title: "Ok", style: UIAlertAction.Style.cancel, handler: nil)
+        alert.addAction(okButton)
+        self.present(alert, animated: true, completion: nil)
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return myNewContentArray.count
@@ -109,14 +94,27 @@ class BasketViewController: UIViewController , UICollectionViewDelegate,UICollec
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BasketReusableCell", for: indexPath as IndexPath) as! BasketCollectionViewCell
+        cell.addToBasketOutlet.addTarget(self, action: #selector(basketOutlet(sender:)), for: .touchUpInside)
+        cell.addToBasketOutlet.tag = indexPath.row
         URLSession.shared.dataTask(with: URL(string: myNewContentArray[indexPath.item].image)!) { (data, response, error) in
             guard let imageData = data else { return }
             DispatchQueue.main.async {
                 cell.imageView.image = UIImage(data: imageData)
             }
         }.resume()
+        
+     
+        
+        
         cell.label.text = myNewContentArray[indexPath.item].label
         return cell
+    }
+    @objc func handleTap(recognizer: UITapGestureRecognizer) {
+        // İşlemlerinizi burada yapın
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("selected\(indexPath.item)")
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell" , for: indexPath) as! BasketTableViewCell
@@ -135,13 +133,7 @@ class BasketViewController: UIViewController , UICollectionViewDelegate,UICollec
         cell.trashButton.tag = indexPath.row
         
 
-        print("öö\(cell.trashButton.setImage(UIImage(systemName: "minus"), for: .normal))")
-        
-
-        let labelPrice = basket[indexPath.item].price
-        
-        
-        
+   
         let labelNumber = selam.productNumber["\(basket[indexPath.item].number)"]!
         if labelNumber > 1 {
                 cell.trashButton.setImage(UIImage(systemName: "minus"), for: .normal)
@@ -150,8 +142,6 @@ class BasketViewController: UIViewController , UICollectionViewDelegate,UICollec
         }
         
         cell.numberOfProduct.text =  "\(selam.productNumber["\(basket[indexPath.item].number)"]!)"
-        print("\(selam.productNumber["\(basket[indexPath.item].number)"]!)")
-        
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -165,7 +155,7 @@ class BasketViewController: UIViewController , UICollectionViewDelegate,UICollec
 
         selam.productNumber["\(basket[buttonTag].number)"]! += 1
         do {
-            try db.collection("cities").document("LA").setData(selam.productNumber)
+            try db.collection("cities").document(currentEmail!).setData(selam.productNumber)
         } catch let error {
             print("Error writing city to Firestore: \(error)")
         }
@@ -175,14 +165,20 @@ class BasketViewController: UIViewController , UICollectionViewDelegate,UICollec
         let buttonTag = sender.tag
         if selam.productNumber["\(basket[buttonTag].number)"]! > 1 {
             selam.productNumber["\(basket[buttonTag].number)"]! -= 1
+        } else {
+            selam.basketArray.removeAll(where: { $0 == basket[buttonTag].number })
+            defaults.set(selam.basketArray, forKey: "basket")
         }
         do {
-            try db.collection("cities").document("LA").setData(selam.productNumber)
+            try db.collection("cities").document(currentEmail!).setData(selam.productNumber)
         } catch let error {
             print("Error writing city to Firestore: \(error)")
         }
         tableView.reloadData()
-        print("sss\(buttonTag)")
+    }
+    @objc func basketOutlet(sender: UIButton){
+        let buttonTag = sender.tag
+        
     }
 }
 

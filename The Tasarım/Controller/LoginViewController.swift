@@ -65,7 +65,6 @@ class LoginViewController: UIViewController , UITextFieldDelegate , UIApplicatio
             self!.loginButtonOutlet.isSelected = false
         }
         self.loginButtonOutlet.isSelected = true
-        print("hit")
         return true
     }
 }

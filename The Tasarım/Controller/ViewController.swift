@@ -20,7 +20,7 @@ class ViewController: UIViewController , UICollectionViewDataSource , UICollecti
     var index: IndexPath?
     var category = Int(0)
     let db = Firestore.firestore()
-
+    let currentEmail = AccountViewController().user
     @IBOutlet var collectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -32,7 +32,7 @@ class ViewController: UIViewController , UICollectionViewDataSource , UICollecti
             defaults.set(likedArray, forKey: "liked")
             selam.likeArray = likedArray
         }
-        db.collection("cities").document("LA")
+        db.collection("cities").document(currentEmail!)
             .addSnapshotListener { documentSnapshot, error in
               guard let document = documentSnapshot else {
                 print("Error fetching document: \(error!)")

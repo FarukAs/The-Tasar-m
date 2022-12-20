@@ -16,15 +16,13 @@ class AccountViewController: UIViewController {
     
     @IBOutlet var logOutButtonOutlet: UIButton!
     let db = Firestore.firestore()
-    
+    let user = Auth.auth().currentUser?.email
     @IBOutlet var usernameLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.scrollEdgeAppearance = UINavigationBarAppearance()
-        let user = Auth.auth().currentUser?.email
         if Auth.auth().currentUser != nil {
-            
-            print("user signed in\(user)")
+            print("user signed in\(user!)")
             
             logOutButtonOutlet.layer.cornerRadius = 18
             logOutButtonOutlet.layer.shadowColor = UIColor.black.cgColor
@@ -42,6 +40,7 @@ class AccountViewController: UIViewController {
                         if let username = data["username"] , let email = data["email"] {
                             if email as! String? == Auth.auth().currentUser?.email as String?  {
                                 self.usernameLabel.text = "\(username)"
+                                print("sas\(email)")
                             }
                         }
                     }
@@ -52,16 +51,11 @@ class AccountViewController: UIViewController {
     }
     
     @IBAction func logOutButton(_ sender: UIButton) {
-        
-        
         do {
             try Auth.auth().signOut()
             navigationController?.popToRootViewController(animated: true)
         } catch let signOutError as NSError {
             print("Error signing out: %@", signOutError)
         }
-        
     }
-    
-    
 }

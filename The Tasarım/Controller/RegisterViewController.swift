@@ -52,7 +52,7 @@ class RegisterViewController: UIViewController , UITextFieldDelegate {
                             "username" :username
                         ]) { err in
                             if let e = err {
-                                print("burası\(e)")
+                                print(e)
                             } else {
                                 print("Succesfully")
                             }
@@ -63,12 +63,8 @@ class RegisterViewController: UIViewController , UITextFieldDelegate {
                 }
             }
         } else if username == "" {
-            print("username gir")
-            //burası username.text boşsa verilecek alert button
         }; if email == "" {
-            print("email giriniz")
         }; if password == "" {
-            print("şifre giriniz")
         }
         
     }
@@ -95,7 +91,6 @@ class RegisterViewController: UIViewController , UITextFieldDelegate {
         }
         self.registerButtonOutlet.isSelected = true
         self.hideKeyboardWhenTappedAround()
-        print("tapped")
         return true
     }
 }

@@ -122,7 +122,7 @@
                                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <segue destination="lSh-YZ-zCl" kind="show" id="LWb-p4-rQW"/>
+                                                    <segue destination="lSh-YZ-zCl" kind="show" identifier="mainToBasketVC" id="LWb-p4-rQW"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E3c-0S-czO">
@@ -669,6 +669,9 @@
                                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="confirmButton:" destination="lSh-YZ-zCl" eventType="touchUpInside" id="SDG-4p-pXi"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </view>

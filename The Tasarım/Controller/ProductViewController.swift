@@ -26,6 +26,7 @@ class ProductViewController: UIViewController {
     var selectedprice = Int(0)
     var selectednumber = Int(0)
     var inBasket = false
+    let currentEmail = AccountViewController().user
     override func viewDidLoad() {
         super.viewDidLoad()
         addBasketButton.layer.cornerRadius = 18
@@ -41,7 +42,6 @@ class ProductViewController: UIViewController {
         if let item = defaults.array(forKey: "basket") as? [Int] {
             selam.basketArray = item
         }
-        print("şşş\(selam.basketArray)")
         for number in selam.basketArray {
             if number == selectednumber {
                 addBasketButton.titleLabel!.text = "Sepete eklendi"
@@ -53,8 +53,6 @@ class ProductViewController: UIViewController {
                 likeButtonOutlet.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             }
         }
-        
-        print(selectedimage)
         URLSession.shared.dataTask(with: URL(string: selectedimage)!) { (data, response, error) in
             
             guard let imageData = data else { return }
@@ -66,17 +64,15 @@ class ProductViewController: UIViewController {
     }
     @IBAction func addToBasket(_ sender: UIButton) {
         if inBasket == true {
-            print(selam.basketArray)
             selam.basketArray.removeAll(where: { $0 == selectednumber })
             defaults.set(selam.basketArray, forKey: "basket")
-            print(selam.basketArray)
             UIView.transition(with: sender, duration: 0.5, options: .transitionFlipFromTop, animations: {
                 sender.setTitle("Sepete ekle", for: .normal)
             }, completion: nil)
             inBasket = false
             selam.productNumber.removeValue(forKey: "\(selectednumber)")
             do {
-                try db.collection("cities").document("LA").setData(selam.productNumber)
+                try db.collection("cities").document(currentEmail!).setData(selam.productNumber)
             } catch let error {
                 print("Error writing city to Firestore: \(error)")
             }
@@ -84,7 +80,6 @@ class ProductViewController: UIViewController {
             selam.basketArray.append(selectednumber)
             let uniqueNumbers = Set(selam.basketArray)
             let numbersWithoutDuplicates = Array(uniqueNumbers)
-            print("kayıt\(numbersWithoutDuplicates)")
             defaults.set(numbersWithoutDuplicates, forKey: "basket")
             UIView.transition(with: sender, duration: 0.5, options: .transitionFlipFromTop, animations: {
                 sender.setTitle("Sepete eklendi", for: .normal)
@@ -92,13 +87,11 @@ class ProductViewController: UIViewController {
             inBasket = true
             selam.productNumber["\(selectednumber)"] = 1
             do {
-                try db.collection("cities").document("LA").setData(selam.productNumber)
+                try db.collection("cities").document(currentEmail!).setData(selam.productNumber)
             } catch let error {
                 print("Error writing city to Firestore: \(error)")
             }
-            print("bb\(selam.productNumber)")
         }
-        print(selectednumber)
     }
     
     @IBAction func likeButton(_ sender: UIButton) {
