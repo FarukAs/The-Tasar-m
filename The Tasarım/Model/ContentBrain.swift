@@ -15,7 +15,6 @@ var Cat  = [Category(image: "kitchen", label: "Sofra & Mutfak"),
             Category(image: "evdekorasyon", label: "Ev Dekorasyon"),
             Category(image: "corap", label: "Çorap"),
             Category(image: "yapimarket", label: "Yapı Market"),]
-
 var myView = [Content(image: "", label: "", information: "", price: 1, number: 1, category: 1)]
 var myNewContentArray = [Content(image: "", label: "", information: "", price: 1, number: 1, category: 1)]
 var basket = [Content(image: "", label: "", information: "", price: 1, number: 1, category: 1)]
